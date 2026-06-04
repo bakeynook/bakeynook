@@ -1,135 +1,1089 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bakey Nook</title>
-
+<title>Bakey Nook | Fresh Cookie Pre-Orders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-body{
-font-family:Arial,sans-serif;
-max-width:700px;
-margin:auto;
-padding:20px;
-background:#f8f8f8;
-}
+  :root {
+    --cream: #fff7c7;
+    --butter: #ffe88c;
+    --vanilla: #fffdf2;
+    --caramel: #e9b95b;
+    --ink: #1e3851;
+    --blue: #2d7daf;
+    --blue-deep: #1f638f;
+    --choco: #6d4a2f;
+    --line: rgba(30, 56, 81, 0.12);
+    --shadow: 0 24px 60px rgba(45, 125, 175, 0.16);
+  }
 
-.container{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px rgba(0,0,0,.1);
-}
+  * {
+    box-sizing: border-box;
+  }
 
-input,select{
-width:100%;
-padding:10px;
-margin:8px 0;
-}
+  body {
+    margin: 0;
+    font-family: "DM Sans", sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), rgba(255, 247, 199, 0.88) 38%, rgba(255, 232, 140, 0.72) 100%);
+  }
 
-button{
-background:#4CAF50;
-color:white;
-border:none;
-padding:12px;
-width:100%;
-cursor:pointer;
-}
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("asset/logo.png");
+    background-size: 190px;
+    background-repeat: repeat;
+    opacity: 0.08;
+    pointer-events: none;
+    filter: saturate(0.8);
+  }
 
-button:hover{
-opacity:.9;
-}
+  .page {
+    position: relative;
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 24px 0 40px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .panel {
+    background: rgba(255, 253, 242, 0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-copy {
+    padding: 34px;
+    overflow: hidden;
+    position: relative;
+    background:
+      linear-gradient(145deg, rgba(255, 253, 242, 0.98), rgba(255, 247, 199, 0.94)),
+      linear-gradient(120deg, rgba(45, 125, 175, 0.14), transparent 45%);
+  }
+
+  .hero-copy::after {
+    content: "";
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    right: -70px;
+    bottom: -70px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45, 125, 175, 0.18), rgba(45, 125, 175, 0));
+  }
+
+  .badge-row,
+  .stats,
+  .mini-grid,
+  .flavor-grid,
+  .info-grid,
+  .footer-note {
+    display: grid;
+    gap: 14px;
+  }
+
+  .topline {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .logo-mark {
+    width: 82px;
+    height: 82px;
+    border-radius: 24px;
+    background: rgba(255, 248, 193, 0.94);
+    border: 1px solid rgba(45, 125, 175, 0.14);
+    display: grid;
+    place-items: center;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+  }
+
+  .logo-mark img,
+  .profile-card img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .eyebrow,
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(45, 125, 175, 0.16);
+    border-radius: 999px;
+    padding: 8px 12px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-family: "Baloo 2", cursive;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  h1 {
+    margin-top: 18px;
+    font-size: clamp(3.2rem, 8vw, 5.5rem);
+    letter-spacing: 0.01em;
+  }
+
+  .subhead {
+    margin: 14px 0 22px;
+    max-width: 560px;
+    font-size: 1.06rem;
+    line-height: 1.7;
+    color: rgba(30, 56, 81, 0.84);
+  }
+
+  .badge-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 24px;
+  }
+
+  .info-pill {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 16px;
+  }
+
+  .info-pill strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+  }
+
+  .info-pill span {
+    font-size: 0.98rem;
+    font-weight: 700;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .button-link,
+  button {
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  }
+
+  .button-link {
+    text-decoration: none;
+    padding: 14px 20px;
+  }
+
+  .button-link.primary,
+  button {
+    color: #fffdf8;
+    background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+    box-shadow: 0 16px 30px rgba(31, 99, 143, 0.24);
+  }
+
+  .button-link.secondary {
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--line);
+  }
+
+  .button-link:hover,
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .stat-card {
+    padding: 18px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid var(--line);
+  }
+
+  .stat-card .number {
+    display: block;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+  }
+
+  .stat-card .label {
+    color: rgba(30, 56, 81, 0.72);
+    font-size: 0.92rem;
+  }
+
+  .hero-side {
+    padding: 26px;
+    display: grid;
+    gap: 18px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 193, 0.96));
+  }
+
+  .profile-card {
+    padding: 22px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255, 250, 219, 0.95));
+    border: 1px solid var(--line);
+  }
+
+  .profile-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .profile-avatar {
+    width: 96px;
+    height: 96px;
+    padding: 10px;
+    border-radius: 28px;
+    background: #fff8cb;
+    border: 3px solid #2f87c6;
+    box-shadow: 0 14px 28px rgba(45, 125, 175, 0.16);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .profile-meta p,
+  .profile-meta strong {
+    margin: 0;
+  }
+
+  .profile-meta strong {
+    display: block;
+    font-size: 1.6rem;
+    font-family: "Baloo 2", cursive;
+  }
+
+  .profile-meta p {
+    color: rgba(30, 56, 81, 0.74);
+    line-height: 1.5;
+  }
+
+  .mini-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mini-card {
+    padding: 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid var(--line);
+  }
+
+  .mini-card strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: var(--blue-deep);
+  }
+
+  .section {
+    margin-top: 24px;
+    padding: 28px;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-head p {
+    margin: 8px 0 0;
+    color: rgba(30, 56, 81, 0.78);
+  }
+
+  .flavor-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .flavor-card {
+    padding: 18px;
+    border-radius: 24px;
+    min-height: 170px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.93), rgba(255, 251, 232, 0.98));
+    border: 1px solid rgba(45, 125, 175, 0.1);
+    box-shadow: 0 14px 30px rgba(45, 125, 175, 0.08);
+  }
+
+  .flavor-card h3 {
+    font-size: 1.55rem;
+    margin-bottom: 10px;
+  }
+
+  .flavor-card p {
+    margin: 0;
+    line-height: 1.6;
+    color: rgba(30, 56, 81, 0.8);
+  }
+
+  .order-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .form-card,
+  .aside-card {
+    padding: 22px;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid var(--line);
+  }
+
+  .field-grid,
+  .info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: rgba(30, 56, 81, 0.86);
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .helper-text {
+    margin: 8px 0 0;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: rgba(30, 56, 81, 0.68);
+  }
+
+  .box-builder {
+    display: none;
+    margin-bottom: 18px;
+    padding: 18px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255, 249, 221, 0.95), rgba(255, 255, 255, 0.88));
+    border: 1px solid rgba(45, 125, 175, 0.14);
+  }
+
+  .box-builder.show {
+    display: block;
+  }
+
+  .box-builder h4 {
+    margin: 0 0 6px;
+    font-size: 1.08rem;
+    font-family: "Baloo 2", cursive;
+    color: var(--blue-deep);
+  }
+
+  .box-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .piece-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 132px;
+    gap: 12px;
+    margin-top: 12px;
+    align-items: end;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    border: 1px solid rgba(45, 125, 175, 0.16);
+    border-radius: 16px;
+    padding: 14px 15px;
+    font: inherit;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.92);
+    outline: none;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: rgba(45, 125, 175, 0.52);
+    box-shadow: 0 0 0 4px rgba(45, 125, 175, 0.12);
+  }
+
+  textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  button {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1rem;
+  }
+
+  #result {
+    margin: 14px 0 0;
+    padding: 14px 16px;
+    border-radius: 16px;
+    display: none;
+    line-height: 1.55;
+    font-weight: 500;
+  }
+
+  #result.show {
+    display: block;
+  }
+
+  #result.info {
+    background: rgba(45, 125, 175, 0.12);
+    color: var(--blue-deep);
+  }
+
+  #result.success {
+    background: rgba(59, 152, 110, 0.14);
+    color: #276748;
+  }
+
+  #result.error {
+    background: rgba(194, 74, 74, 0.12);
+    color: #9f3030;
+  }
+
+  .aside-card h3,
+  .form-card h3 {
+    margin-bottom: 14px;
+    font-size: 1.65rem;
+  }
+
+  .checklist,
+  .footer-note {
+    padding-left: 18px;
+    margin: 0;
+  }
+
+  .checklist li,
+  .footer-note li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    color: rgba(30, 56, 81, 0.82);
+  }
+
+  .closing {
+    text-align: center;
+    padding: 28px;
+    margin-top: 24px;
+  }
+
+  .closing p {
+    margin: 8px 0 0;
+    color: rgba(30, 56, 81, 0.78);
+  }
+
+  @media (max-width: 980px) {
+    .hero,
+    .order-layout,
+    .flavor-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .badge-row,
+    .stats,
+    .field-grid,
+    .info-grid,
+    .box-grid,
+    .mini-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page {
+      width: min(100% - 18px, 100%);
+      padding-top: 10px;
+    }
+
+    .hero-copy,
+    .hero-side,
+    .section {
+      padding: 22px 18px;
+      border-radius: 24px;
+    }
+
+    .topline,
+    .profile-head,
+    .section-head {
+      display: block;
+    }
+
+    .profile-head,
+    .topline {
+      text-align: center;
+    }
+
+    .logo-mark,
+    .profile-avatar {
+      margin: 0 auto 12px;
+    }
+
+    .badge-row,
+    .stats,
+    .field-grid,
+    .info-grid,
+    .box-grid,
+    .mini-grid {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 3.4rem;
+      text-align: center;
+    }
+
+    .subhead,
+    .section-head p {
+      text-align: center;
+    }
+
+    .cta-row {
+      justify-content: center;
+    }
+  }
 </style>
-
 </head>
 <body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-copy panel">
+        <div class="topline">
+          <div class="logo-mark">
+            <img src="asset/logo.png" alt="Bakey Nook logo">
+          </div>
+          <div>
+            <span class="eyebrow">Home Bakery | CBO</span>
+            <h2>Freshly baked comfort in every box.</h2>
+          </div>
+        </div>
 
-<div class="container">
+        <h1>Bakey Nook</h1>
+        <p class="subhead">
+          Freshly baked cookies for sweet cravings, gifts, and shareable boxes.
+        </p>
 
-<h1>🍪 Bakey Nook</h1>
-<p>Freshly baked. Pre-order only.</p>
+        <div class="badge-row">
+          <div class="info-pill">
+            <strong>Ordering</strong>
+            <span>DM or form pre-orders</span>
+          </div>
+          <div class="info-pill">
+            <strong>Schedule</strong>
+            <span>Fresh batch days weekly</span>
+          </div>
+          <div class="info-pill">
+            <strong>Options</strong>
+            <span>Per piece or box of 6</span>
+          </div>
+        </div>
 
-<input id="customerName" placeholder="Customer Name">
+        <div class="cta-row">
+          <a class="button-link primary" href="#order-form">Reserve a Box</a>
+          <a class="button-link secondary" href="#flavors">See Flavors</a>
+        </div>
 
-<input id="mobile" placeholder="Mobile Number">
+        <div class="stats">
+          <div class="stat-card">
+            <span class="number">8</span>
+            <span class="label">Signature flavors</span>
+          </div>
+          <div class="stat-card">
+            <span class="number">108</span>
+            <span class="label">Facebook followers</span>
+          </div>
+          <div class="stat-card">
+            <span class="number">100%</span>
+            <span class="label">Made fresh to order</span>
+          </div>
+        </div>
+      </div>
 
-<select id="product">
-<option>OG Chocolate Chip</option>
-<option>Red Velvet</option>
-<option>Rocky Road</option>
-<option>Biscoff</option>
-<option>S'mores</option>
-<option>Cookies N Cream</option>
-<option>Cinnamon</option>
-<option>Double Trouble</option>
-</select>
+      <aside class="hero-side panel">
+        <div class="profile-card">
+          <div class="profile-head">
+            <div class="profile-avatar">
+              <img src="asset/logo.png" alt="Bakey Nook profile logo">
+            </div>
+            <div class="profile-meta">
+              <strong>Bakey Nook</strong>
+              <p>Home Bakery | CBO</p>
+              <p>By pre-order only</p>
+            </div>
+          </div>
 
-<select id="option">
-<option>Pcs</option>
-<option>Box of 6</option>
-</select>
+          <div class="mini-grid">
+            <div class="mini-card">
+              <strong>Best For</strong>
+              Small celebrations, cravings, and gift boxes
+            </div>
+            <div class="mini-card">
+              <strong>Ordering Style</strong>
+              Easy form submission plus direct message follow-up
+            </div>
+            <div class="mini-card">
+              <strong>Delivery</strong>
+              Pick-up or delivery arrangements available
+            </div>
+            <div class="mini-card">
+              <strong>Brand Vibe</strong>
+              Cozy, playful, and homemade with a polished look
+            </div>
+          </div>
+        </div>
 
-<input id="quantity" type="number" placeholder="Quantity">
+      </aside>
+    </section>
 
-<select id="pickupOrDelivery">
-<option>Pick-up</option>
-<option>Delivery</option>
-</select>
+    <section class="section panel" id="flavors">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Cookie Lineup</span>
+          <h2>Fan-favorite flavors</h2>
+          <p>Short, craveable descriptions to make each option feel more premium.</p>
+        </div>
+      </div>
 
-<input id="date" type="date">
+      <div class="flavor-grid">
+        <article class="flavor-card">
+          <h3>OG Choco Chip</h3>
+          <p>The classic comfort cookie with rich chocolate chips in every warm bite.</p>
+        </article>
+        <article class="flavor-card">
+          <h3>Red Velvet</h3>
+          <p>Soft, vibrant, and lightly cocoa-kissed with a bakery-style finish.</p>
+        </article>
+        <article class="flavor-card">
+          <h3>Rocky Road</h3>
+          <p>A chunky crowd-pleaser packed with gooey, crunchy, chocolatey texture.</p>
+        </article>
+        <article class="flavor-card">
+          <h3>Biscoff</h3>
+          <p>Deep caramel spice notes with that smooth cookie butter personality.</p>
+        </article>
+        <article class="flavor-card">
+          <h3>S'mores</h3>
+          <p>Campfire sweetness with melty chocolate and marshmallow-inspired flavor.</p>
+        </article>
+        <article class="flavor-card">
+          <h3>Cookies N Cream</h3>
+          <p>Creamy vanilla cookie base with familiar crunch and dreamy sweetness.</p>
+        </article>
+        <article class="flavor-card">
+          <h3>Cinnamon</h3>
+          <p>Warm spice, soft center, and a cozy finish that feels freshly home-baked.</p>
+        </article>
+        <article class="flavor-card">
+          <h3>Double Trouble</h3>
+          <p>An extra-rich chocolate option for people who want bold cookie energy.</p>
+        </article>
+      </div>
+    </section>
 
-<button onclick="submitOrder()">
-Submit Order
-</button>
+    <section class="section panel" id="order-form">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Pre-Order Form</span>
+          <h2>Reserve your next batch</h2>
+        </div>
+      </div>
 
-<p id="result"></p>
+      <div class="order-layout">
+        <form class="form-card" onsubmit="submitOrder(event)">
+          <h3>Customer Details</h3>
 
-</div>
+          <div class="field-grid">
+            <div class="field">
+              <label for="customerName">Customer Name</label>
+              <input id="customerName" name="customerName" placeholder="e.g. Maria Santos" required>
+            </div>
+
+            <div class="field">
+              <label for="mobile">Mobile Number</label>
+              <input id="mobile" name="mobile" placeholder="09XXXXXXXXX" required>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="product">Selection Summary</label>
+              <input id="product" name="product" readonly value="OG Chocolate Chip x1">
+              <p class="helper-text" id="productHelp">Choose multiple flavors and quantity per flavor for per-piece orders.</p>
+            </div>
+
+            <div class="field">
+              <label for="option">Order Type</label>
+              <select id="option" name="option" required>
+                <option value="Pcs">Per Piece</option>
+                <option value="Box of 6">Box of 6</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="box-builder show" id="pieceBuilder">
+            <h4>Build Your Per Piece Order</h4>
+            <p class="helper-text">Add the flavors you want, then set how many pieces for each one.</p>
+            <div class="piece-row">
+              <div class="field">
+                <label for="pieceFlavor1">Flavor 1</label>
+                <select id="pieceFlavor1" class="piece-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="pieceQty1">Qty</label>
+                <input id="pieceQty1" class="piece-qty-input" type="number" min="0" value="1">
+              </div>
+            </div>
+            <div class="piece-row">
+              <div class="field">
+                <label for="pieceFlavor2">Flavor 2</label>
+                <select id="pieceFlavor2" class="piece-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="pieceQty2">Qty</label>
+                <input id="pieceQty2" class="piece-qty-input" type="number" min="0" value="0">
+              </div>
+            </div>
+            <div class="piece-row">
+              <div class="field">
+                <label for="pieceFlavor3">Flavor 3</label>
+                <select id="pieceFlavor3" class="piece-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="pieceQty3">Qty</label>
+                <input id="pieceQty3" class="piece-qty-input" type="number" min="0" value="0">
+              </div>
+            </div>
+            <div class="piece-row">
+              <div class="field">
+                <label for="pieceFlavor4">Flavor 4</label>
+                <select id="pieceFlavor4" class="piece-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="pieceQty4">Qty</label>
+                <input id="pieceQty4" class="piece-qty-input" type="number" min="0" value="0">
+              </div>
+            </div>
+          </div>
+
+          <div class="box-builder" id="boxBuilder">
+            <h4>Build Your Box of 6</h4>
+            <p class="helper-text">Pick one flavor per slot. Puwede magkaiba bawat cookie sa isang box.</p>
+            <div class="box-grid">
+              <div class="field">
+                <label for="boxFlavor1">Cookie 1</label>
+                <select id="boxFlavor1" class="box-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="boxFlavor2">Cookie 2</label>
+                <select id="boxFlavor2" class="box-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="boxFlavor3">Cookie 3</label>
+                <select id="boxFlavor3" class="box-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="boxFlavor4">Cookie 4</label>
+                <select id="boxFlavor4" class="box-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="boxFlavor5">Cookie 5</label>
+                <select id="boxFlavor5" class="box-flavor-select"></select>
+              </div>
+              <div class="field">
+                <label for="boxFlavor6">Cookie 6</label>
+                <select id="boxFlavor6" class="box-flavor-select"></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="quantity" id="quantityLabel">Quantity</label>
+              <input id="quantity" name="quantity" type="number" min="1" placeholder="How many?" required>
+              <p class="helper-text" id="quantityHelp">How many pieces would you like in total?</p>
+            </div>
+
+            <div class="field">
+              <label for="pickupOrDelivery">Fulfillment</label>
+              <select id="pickupOrDelivery" name="pickupOrDelivery" required>
+                <option value="Pick-up">Pick-up</option>
+                <option value="Delivery">Delivery</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="date">Preferred Date</label>
+              <input id="date" name="date" type="date" required>
+            </div>
+
+            <div class="field">
+              <label for="notes">Order Notes</label>
+              <input id="notes" name="notes" placeholder="Landmark, request, or message">
+            </div>
+          </div>
+
+          <button id="submitButton" type="submit">Submit Pre-Order</button>
+          <p id="result" aria-live="polite"></p>
+        </form>
+
+        <aside class="aside-card">
+          <h3>How Ordering Works</h3>
+          <ul class="checklist">
+            <li>Pick your flavor or build a mixed Box of 6, then choose quantity and fulfillment.</li>
+            <li>Send the form, then confirm final details through message if needed.</li>
+            <li>Orders are ideal for planned cravings, gifting, and small celebrations.</li>
+            <li>Pre-orders help keep every batch fresh and less rushed.</li>
+          </ul>
+
+          <div class="info-grid" style="margin-top:18px;">
+            <div class="mini-card">
+              <strong>Perfect For</strong>
+              Family snacks, barkada share boxes, and sweet surprises
+            </div>
+            <div class="mini-card">
+              <strong>Brand Strength</strong>
+              Friendly handmade feel with a cleaner, trust-building site
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="closing panel">
+      <span class="eyebrow">Bakey Nook</span>
+      <h2>Fresh from our oven to your hands.</h2>
+      <p>Made for sweet cravings, thoughtful gifts, and cozy cookie moments.</p>
+    </section>
+  </main>
 
 <script>
+  const API_URL = "https://script.google.com/macros/s/AKfycbye3_nNvago7qnMauaDy5r-vZLXLHutHmNEC1HzxKqtZHHx7W0tw5Hkj7V67k9t6T5U/exec";
 
-const API_URL =
-"https://script.google.com/macros/s/AKfycbye3_nNvago7qnMauaDy5r-vZLXLHutHmNEC1HzxKqtZHHx7W0tw5Hkj7V67k9t6T5U/exec";
+  const result = document.getElementById("result");
+  const submitButton = document.getElementById("submitButton");
+  const dateInput = document.getElementById("date");
+  const orderTypeSelect = document.getElementById("option");
+  const productSelect = document.getElementById("product");
+  const productHelp = document.getElementById("productHelp");
+  const pieceBuilder = document.getElementById("pieceBuilder");
+  const boxBuilder = document.getElementById("boxBuilder");
+  const quantityInput = document.getElementById("quantity");
+  const quantityLabel = document.getElementById("quantityLabel");
+  const quantityHelp = document.getElementById("quantityHelp");
+  const boxFlavorSelects = Array.from(document.querySelectorAll(".box-flavor-select"));
+  const pieceFlavorSelects = Array.from(document.querySelectorAll(".piece-flavor-select"));
+  const pieceQtyInputs = Array.from(document.querySelectorAll(".piece-qty-input"));
+  const flavors = [
+    "OG Chocolate Chip",
+    "Red Velvet",
+    "Rocky Road",
+    "Biscoff",
+    "S'mores",
+    "Cookies N Cream",
+    "Cinnamon",
+    "Double Trouble"
+  ];
 
-async function submitOrder(){
+  dateInput.min = new Date().toISOString().split("T")[0];
 
-const data = {
-customerName: document.getElementById("customerName").value,
-mobile: document.getElementById("mobile").value,
-product: document.getElementById("product").value,
-option: document.getElementById("option").value,
-quantity: document.getElementById("quantity").value,
-pickupOrDelivery: document.getElementById("pickupOrDelivery").value,
-date: document.getElementById("date").value
-};
+  function populateBoxFlavorSelects() {
+    boxFlavorSelects.forEach((select, index) => {
+      select.innerHTML = flavors
+        .map((flavor) => `<option value="${flavor}">${flavor}</option>`)
+        .join("");
 
-document.getElementById("result").innerHTML =
-"⏳ Sending order...";
+      select.value = flavors[index % flavors.length];
+    });
+  }
 
-try {
+  function populatePieceFlavorSelects() {
+    pieceFlavorSelects.forEach((select, index) => {
+      select.innerHTML = flavors
+        .map((flavor) => `<option value="${flavor}">${flavor}</option>`)
+        .join("");
 
-const response = await fetch(API_URL,{
-method:"POST",
-mode:"no-cors",
-body: JSON.stringify(data)
-});
+      select.value = flavors[index % flavors.length];
+    });
+  }
 
-document.getElementById("result").innerHTML =
-"✅ Order sent! Check Google Sheet.";
+  function syncOrderTypeUI() {
+    const isBoxOrder = orderTypeSelect.value === "Box of 6";
 
-}
-catch(err){
+    pieceBuilder.classList.toggle("show", !isBoxOrder);
+    boxBuilder.classList.toggle("show", isBoxOrder);
+    productSelect.readOnly = true;
+    quantityInput.required = isBoxOrder;
+    quantityInput.disabled = !isBoxOrder;
+    quantityLabel.textContent = isBoxOrder ? "Number of Boxes" : "Total Quantity";
+    quantityHelp.textContent = isBoxOrder
+      ? "Enter how many boxes of 6 you want."
+      : "Automatically based on the per-piece quantities above.";
+    productHelp.textContent = isBoxOrder
+      ? "Mixed box mode is on. Use the six selectors below to choose each cookie flavor."
+      : "Choose multiple flavors and quantity per flavor for per-piece orders.";
 
-document.getElementById("result").innerHTML =
-"❌ Error: " + err;
+    if (!isBoxOrder) {
+      quantityInput.value = getPerPieceTotal();
+      productSelect.value = getPerPieceSelections().map((item) => `${item.flavor} x${item.qty}`).join(", ") || "";
+    } else if (!quantityInput.value) {
+      quantityInput.value = "1";
+      productSelect.value = "Mixed Box of 6";
+    } else {
+      productSelect.value = "Mixed Box of 6";
+    }
+  }
 
-console.log(err);
+  function getPerPieceSelections() {
+    return pieceFlavorSelects
+      .map((select, index) => ({
+        flavor: select.value,
+        qty: Number(pieceQtyInputs[index].value || 0)
+      }))
+      .filter((item) => item.qty > 0);
+  }
 
-}
+  function getPerPieceTotal() {
+    return getPerPieceSelections().reduce((sum, item) => sum + item.qty, 0);
+  }
 
-}
+  function syncPerPieceTotal() {
+    if (orderTypeSelect.value === "Pcs") {
+      quantityInput.value = getPerPieceTotal();
+      productSelect.value = getPerPieceSelections().map((item) => `${item.flavor} x${item.qty}`).join(", ") || "";
+    }
+  }
 
+  function setStatus(type, message) {
+    result.className = "show " + type;
+    result.textContent = message;
+  }
+
+  async function submitOrder(event) {
+    event.preventDefault();
+
+    const isBoxOrder = orderTypeSelect.value === "Box of 6";
+    const perPieceSelections = isBoxOrder ? [] : getPerPieceSelections();
+    const perPieceTotal = isBoxOrder ? 0 : getPerPieceTotal();
+    const boxSelections = isBoxOrder
+      ? boxFlavorSelects.map((select) => select.value)
+      : [];
+    const flavorSummary = isBoxOrder
+      ? "Mixed Box of 6: " + boxSelections.join(", ")
+      : perPieceSelections.map((item) => `${item.flavor} x${item.qty}`).join(", ");
+    const notesField = document.getElementById("notes").value.trim();
+    const finalQuantity = isBoxOrder ? quantityInput.value : String(perPieceTotal);
+
+    const data = {
+      customerName: document.getElementById("customerName").value.trim(),
+      mobile: document.getElementById("mobile").value.trim(),
+      product: flavorSummary,
+      option: orderTypeSelect.value,
+      quantity: finalQuantity,
+      pickupOrDelivery: document.getElementById("pickupOrDelivery").value,
+      date: document.getElementById("date").value,
+      notes: isBoxOrder
+        ? [notesField, "Flavor mix: " + boxSelections.join(", ")].filter(Boolean).join(" | ")
+        : [notesField, "Per piece mix: " + flavorSummary].filter(Boolean).join(" | ")
+    };
+
+    if (!data.customerName || !data.mobile || !data.quantity || !data.date || !data.product) {
+      setStatus("error", "Please complete the required fields before submitting.");
+      return;
+    }
+
+    if (!isBoxOrder && perPieceTotal < 1) {
+      setStatus("error", "Please complete the required fields before submitting.");
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.style.opacity = "0.7";
+    setStatus("info", "Sending your pre-order request...");
+
+    try {
+      await fetch(API_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(data)
+      });
+
+      setStatus(
+        "success",
+        "Pre-order sent. Bakey Nook can now review your request and confirm the details with you."
+      );
+
+      event.target.reset();
+      dateInput.min = new Date().toISOString().split("T")[0];
+      populatePieceFlavorSelects();
+      populateBoxFlavorSelects();
+      syncOrderTypeUI();
+    } catch (error) {
+      setStatus("error", "Something went wrong while sending your order. Please try again.");
+      console.error(error);
+    } finally {
+      submitButton.disabled = false;
+      submitButton.style.opacity = "1";
+    }
+  }
+
+  populatePieceFlavorSelects();
+  populateBoxFlavorSelects();
+  syncOrderTypeUI();
+  orderTypeSelect.addEventListener("change", syncOrderTypeUI);
+  pieceQtyInputs.forEach((input) => input.addEventListener("input", syncPerPieceTotal));
+  pieceFlavorSelects.forEach((select) => select.addEventListener("change", syncPerPieceTotal));
 </script>
-
 </body>
 </html>
