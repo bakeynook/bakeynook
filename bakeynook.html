@@ -94,37 +94,38 @@ const API_URL =
 async function submitOrder(){
 
 const data = {
-customerName:
-document.getElementById("customerName").value,
-
-mobile:
-document.getElementById("mobile").value,
-
-product:
-document.getElementById("product").value,
-
-option:
-document.getElementById("option").value,
-
-quantity:
-document.getElementById("quantity").value,
-
-pickupOrDelivery:
-document.getElementById("pickupOrDelivery").value,
-
-date:
-document.getElementById("date").value
+customerName: document.getElementById("customerName").value,
+mobile: document.getElementById("mobile").value,
+product: document.getElementById("product").value,
+option: document.getElementById("option").value,
+quantity: document.getElementById("quantity").value,
+pickupOrDelivery: document.getElementById("pickupOrDelivery").value,
+date: document.getElementById("date").value
 };
+
+document.getElementById("result").innerHTML =
+"⏳ Sending order...";
+
+try {
 
 const response = await fetch(API_URL,{
 method:"POST",
-body:JSON.stringify(data)
+mode:"no-cors",
+body: JSON.stringify(data)
 });
 
-const result = await response.json();
+document.getElementById("result").innerHTML =
+"✅ Order sent! Check Google Sheet.";
+
+}
+catch(err){
 
 document.getElementById("result").innerHTML =
-"✅ Order Submitted!<br>Order ID: " + result.orderId;
+"❌ Error: " + err;
+
+console.log(err);
+
+}
 
 }
 
