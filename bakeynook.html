@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bakey Nook</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+max-width:700px;
+margin:auto;
+padding:20px;
+background:#f8f8f8;
+}
+
+.container{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:8px 0;
+}
+
+button{
+background:#4CAF50;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>🍪 Bakey Nook</h1>
+<p>Freshly baked. Pre-order only.</p>
+
+<input id="customerName" placeholder="Customer Name">
+
+<input id="mobile" placeholder="Mobile Number">
+
+<select id="product">
+<option>OG Chocolate Chip</option>
+<option>Red Velvet</option>
+<option>Rocky Road</option>
+<option>Biscoff</option>
+<option>S'mores</option>
+<option>Cookies N Cream</option>
+<option>Cinnamon</option>
+<option>Double Trouble</option>
+</select>
+
+<select id="option">
+<option>Pcs</option>
+<option>Box of 6</option>
+</select>
+
+<input id="quantity" type="number" placeholder="Quantity">
+
+<select id="pickupOrDelivery">
+<option>Pick-up</option>
+<option>Delivery</option>
+</select>
+
+<input id="date" type="date">
+
+<button onclick="submitOrder()">
+Submit Order
+</button>
+
+<p id="result"></p>
+
+</div>
+
+<script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbye3_nNvago7qnMauaDy5r-vZLXLHutHmNEC1HzxKqtZHHx7W0tw5Hkj7V67k9t6T5U/exec";
+
+async function submitOrder(){
+
+const data = {
+customerName:
+document.getElementById("customerName").value,
+
+mobile:
+document.getElementById("mobile").value,
+
+product:
+document.getElementById("product").value,
+
+option:
+document.getElementById("option").value,
+
+quantity:
+document.getElementById("quantity").value,
+
+pickupOrDelivery:
+document.getElementById("pickupOrDelivery").value,
+
+date:
+document.getElementById("date").value
+};
+
+const response = await fetch(API_URL,{
+method:"POST",
+body:JSON.stringify(data)
+});
+
+const result = await response.json();
+
+document.getElementById("result").innerHTML =
+"✅ Order Submitted!<br>Order ID: " + result.orderId;
+
+}
+
+</script>
+
+</body>
+</html>
