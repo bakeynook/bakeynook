@@ -193,6 +193,44 @@
     margin-bottom: 22px;
   }
 
+  .shop-cart-button {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 18;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(45, 125, 175, 0.14);
+    box-shadow: 0 16px 32px rgba(45, 125, 175, 0.16);
+    color: var(--ink);
+  }
+
+  .shop-cart-icon {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .shop-cart-count {
+    min-width: 26px;
+    height: 26px;
+    padding: 0 8px;
+    border-radius: 999px;
+    display: inline-grid;
+    place-items: center;
+    background: #ff8a4c;
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
   .button-link,
   button {
     border: none;
@@ -257,64 +295,79 @@
       linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 248, 193, 0.96));
   }
 
-  .profile-card {
-    padding: 22px;
-    border-radius: 28px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255, 250, 219, 0.95));
-    border: 1px solid var(--line);
+  .hero-gallery {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 14px;
+    height: 100%;
   }
 
-  .profile-head {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 18px;
-  }
-
-  .profile-avatar {
-    width: 96px;
-    height: 96px;
-    padding: 10px;
-    border-radius: 28px;
-    background: #fff8cb;
-    border: 3px solid #2f87c6;
-    box-shadow: 0 14px 28px rgba(45, 125, 175, 0.16);
+  .hero-shot,
+  .hero-stack-card,
+  .hero-note {
     overflow: hidden;
-    flex-shrink: 0;
+    border-radius: 28px;
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    background: rgba(255,255,255,0.88);
+    box-shadow: 0 16px 36px rgba(45, 125, 175, 0.08);
   }
 
-  .profile-meta p,
-  .profile-meta strong {
-    margin: 0;
+  .hero-shot {
+    position: relative;
+    min-height: 520px;
   }
 
-  .profile-meta strong {
+  .hero-shot img,
+  .hero-stack-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    font-size: 1.6rem;
+  }
+
+  .hero-shot-badge {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 22px;
+    background: rgba(255, 251, 232, 0.88);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-shot-badge strong,
+  .hero-note strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1.3rem;
     font-family: "Baloo 2", cursive;
   }
 
-  .profile-meta p {
-    color: rgba(30, 56, 81, 0.74);
+  .hero-shot-badge p,
+  .hero-note p {
+    margin: 0;
     line-height: 1.5;
+    color: rgba(30, 56, 81, 0.76);
   }
 
-  .mini-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .hero-stack {
+    display: grid;
+    gap: 14px;
+    grid-template-rows: 1fr 1fr auto;
   }
 
-  .mini-card {
-    padding: 16px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.76);
-    border: 1px solid var(--line);
+  .hero-stack-card {
+    min-height: 160px;
   }
 
-  .mini-card strong {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1rem;
-    color: var(--blue-deep);
+  .hero-note {
+    padding: 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,248,193,0.94));
   }
 
   .section {
@@ -340,13 +393,49 @@
   }
 
   .flavor-card {
-    padding: 18px;
+    overflow: hidden;
     border-radius: 24px;
-    min-height: 170px;
+    min-height: 100%;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.93), rgba(255, 251, 232, 0.98));
     border: 1px solid rgba(45, 125, 175, 0.1);
     box-shadow: 0 14px 30px rgba(45, 125, 175, 0.08);
+  }
+
+  .flavor-photo {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #fff8d7;
+  }
+
+  .flavor-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .flavor-copy {
+    padding: 18px;
+  }
+
+  .flavor-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .mini-action {
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    box-shadow: none;
   }
 
   .flavor-card h3 {
@@ -360,19 +449,127 @@
     color: rgba(30, 56, 81, 0.8);
   }
 
+  .price-tag {
+    display: inline-flex;
+    margin-bottom: 10px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(45, 125, 175, 0.1);
+    color: var(--blue-deep);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
   .order-layout {
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
-    gap: 18px;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
     align-items: start;
+  }
+
+  .order-layout.shop-sidebar-only {
+    grid-template-columns: minmax(0, 320px);
+    justify-content: end;
   }
 
   .form-card,
   .aside-card {
-    padding: 22px;
+    padding: 24px;
+    border-radius: 30px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 251, 232, 0.9));
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    box-shadow: 0 18px 40px rgba(45, 125, 175, 0.08);
+  }
+
+  #order-form {
+    display: none;
+  }
+
+  .form-card.home-hidden {
+    display: none;
+  }
+
+  .shop-stage {
+    display: grid;
+    gap: 20px;
+  }
+
+  .shop-stage-card {
+    display: grid;
+    gap: 18px;
+    padding: 24px;
     border-radius: 26px;
-    background: rgba(255, 255, 255, 0.82);
-    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(255, 249, 221, 0.96), rgba(255, 255, 255, 0.94));
+    border: 1px solid rgba(45, 125, 175, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.52);
+  }
+
+  .shop-stage-copy h3 {
+    margin: 10px 0 6px;
+    font-size: 2rem;
+  }
+
+  .shop-stage-copy p {
+    margin: 0;
+    color: rgba(30, 56, 81, 0.74);
+    line-height: 1.6;
+  }
+
+  .shop-stage-pills {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .shop-stage-pill {
+    padding: 14px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(45, 125, 175, 0.12);
+  }
+
+  .shop-stage-pill strong,
+  .shop-stage-pill span {
+    display: block;
+  }
+
+  .shop-stage-pill strong {
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
+  }
+
+  .shop-stage-pill span {
+    margin-top: 6px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .shop-stage-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .ghost-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    background: rgba(255, 255, 255, 0.86);
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .legacy-cart-state {
+    display: none;
   }
 
   .field-grid,
@@ -399,13 +596,98 @@
     color: rgba(30, 56, 81, 0.68);
   }
 
+  .cart-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+
+  .cart-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    background: rgba(45, 125, 175, 0.08);
+    color: var(--blue-deep);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .builder-shell {
+    display: grid;
+    gap: 18px;
+  }
+
+  .picker-card {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr) 132px;
+    gap: 12px;
+    margin-top: 12px;
+    align-items: end;
+    padding: 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.78);
+    border: 1px solid rgba(45, 125, 175, 0.1);
+  }
+
+  .picker-thumb {
+    width: 84px;
+    height: 84px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff6cb;
+    border: 1px solid rgba(45, 125, 175, 0.12);
+  }
+
+  .picker-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .picker-main {
+    min-width: 0;
+  }
+
+  .picker-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .picker-pill {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .picker-pill.price {
+    background: rgba(45, 125, 175, 0.1);
+    color: var(--blue-deep);
+  }
+
+  .picker-pill.type {
+    background: rgba(255, 238, 168, 0.62);
+    color: var(--ink);
+  }
+
   .box-builder {
     display: none;
-    margin-bottom: 18px;
+    margin-bottom: 0;
     padding: 18px;
     border-radius: 22px;
-    background: linear-gradient(180deg, rgba(255, 249, 221, 0.95), rgba(255, 255, 255, 0.88));
+    background: linear-gradient(180deg, rgba(255, 249, 221, 0.95), rgba(255, 255, 255, 0.95));
     border: 1px solid rgba(45, 125, 175, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.48);
   }
 
   .box-builder.show {
@@ -414,7 +696,7 @@
 
   .box-builder h4 {
     margin: 0 0 6px;
-    font-size: 1.08rem;
+    font-size: 1.16rem;
     font-family: "Baloo 2", cursive;
     color: var(--blue-deep);
   }
@@ -426,20 +708,171 @@
     margin-top: 14px;
   }
 
-  .piece-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 132px;
-    gap: 12px;
-    margin-top: 12px;
-    align-items: end;
+  .box-slot {
+    padding: 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid rgba(45, 125, 175, 0.1);
   }
 
-  .summary-card {
+  .box-slot-thumb {
+    width: 100%;
+    height: 120px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff6cb;
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    margin-bottom: 12px;
+  }
+
+  .box-slot-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .checkout-meta {
+    display: grid;
+    gap: 14px;
     margin-top: 18px;
     padding: 18px;
     border-radius: 22px;
-    background: linear-gradient(180deg, rgba(255, 251, 232, 0.96), rgba(255, 255, 255, 0.94));
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(45, 125, 175, 0.1);
+  }
+
+  .summary-card {
+    margin-top: 0;
+    padding: 22px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 251, 232, 0.98), rgba(255, 255, 255, 0.96));
     border: 1px solid rgba(45, 125, 175, 0.14);
+    box-shadow: 0 14px 30px rgba(45, 125, 175, 0.06);
+  }
+
+  .drawer-box-builder {
+    display: none;
+    margin-top: 16px;
+    padding: 20px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 249, 221, 0.96), rgba(255, 255, 255, 0.96));
+    border: 1px solid rgba(45, 125, 175, 0.14);
+  }
+
+  .drawer-box-builder.show {
+    display: block;
+  }
+
+  .drawer-box-builder.checkout-hidden {
+    display: none;
+  }
+
+  .drawer-box-head {
+    margin-bottom: 14px;
+  }
+
+  .drawer-box-head h4 {
+    margin: 0 0 6px;
+    color: var(--blue-deep);
+    font-size: 1.3rem;
+  }
+
+  .modal-box-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .modal-box-slot {
+    padding: 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.84);
+    border: 1px solid rgba(45, 125, 175, 0.1);
+  }
+
+  .modal-box-slot img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    background: #fff7d0;
+  }
+
+  .drawer-primary-action {
+    margin-top: 16px;
+  }
+
+  .cart-notes {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .cart-note-card {
+    padding: 16px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.76);
+    border: 1px solid rgba(45, 125, 175, 0.1);
+  }
+
+  .cart-note-card strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--blue-deep);
+    font-size: 0.98rem;
+  }
+
+  .checkout-panel {
+    display: grid;
+    gap: 14px;
+  }
+
+  .checkout-box {
+    padding: 18px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,251,232,0.94));
+    border: 1px solid rgba(45, 125, 175, 0.12);
+  }
+
+  .checkout-box h4 {
+    margin: 0 0 12px;
+    font-family: "Baloo 2", cursive;
+    font-size: 1.12rem;
+    color: var(--blue-deep);
+  }
+
+  .checkout-stat {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    border-bottom: 1px dashed rgba(45, 125, 175, 0.18);
+  }
+
+  .checkout-stat:last-of-type {
+    border-bottom: none;
+  }
+
+  .checkout-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(45, 125, 175, 0.16);
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+  }
+
+  .checkout-actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
   }
 
   .summary-card h4 {
@@ -461,6 +894,93 @@
     gap: 16px;
     font-size: 0.95rem;
     line-height: 1.5;
+  }
+
+  .cart-item-line {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: start;
+    padding: 10px 0;
+  }
+
+  .cart-item-thumb {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff6cb;
+    border: 1px solid rgba(45, 125, 175, 0.12);
+  }
+
+  .cart-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cart-item-copy strong {
+    display: block;
+    font-size: 0.92rem;
+  }
+
+  .cart-item-copy span {
+    display: block;
+    font-size: 0.82rem;
+    color: rgba(30, 56, 81, 0.68);
+  }
+
+  .cart-item-meta {
+    display: grid;
+    justify-items: end;
+    align-content: start;
+    gap: 8px;
+  }
+
+  .cart-item-price {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+    white-space: nowrap;
+  }
+
+  .cart-line-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .cart-line-button {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    background: rgba(255,255,255,0.92);
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .cart-line-button.remove {
+    color: #9f3030;
+  }
+
+  .cart-item-spacer {
+    display: none;
+  }
+
+  .cart-line-qty {
+    min-width: 32px;
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--ink);
   }
 
   .summary-line span:last-child {
@@ -495,6 +1015,46 @@
 
   .modal.show {
     display: flex;
+  }
+
+  .drawer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(760px, calc(100% - 28px));
+    max-height: min(88vh, 920px);
+    padding: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,251,232,0.98));
+    box-shadow: 0 28px 70px rgba(19, 36, 51, 0.28);
+    border: 1px solid rgba(45, 125, 175, 0.16);
+    border-radius: 30px;
+    transform: translate(-50%, calc(-50% + 24px));
+    transition: transform 0.24s ease, opacity 0.24s ease;
+    z-index: 22;
+    overflow: auto;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .drawer.show {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(19, 36, 51, 0.38);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 21;
+  }
+
+  .drawer-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .modal-card {
@@ -629,6 +1189,12 @@
     font-size: 1.65rem;
   }
 
+  .aside-card {
+    position: sticky;
+    top: 18px;
+    padding: 18px;
+  }
+
   .checklist,
   .footer-note {
     padding-left: 18px;
@@ -665,22 +1231,42 @@
     .field-grid,
     .info-grid,
     .box-grid,
-    .mini-grid {
+    .hero-gallery,
+    .modal-box-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .picker-card {
+      grid-template-columns: 84px minmax(0, 1fr) 120px;
     }
   }
 
   @media (max-width: 640px) {
     .page {
-      width: min(100% - 18px, 100%);
-      padding-top: 10px;
+      width: min(100% - 12px, 100%);
+      padding: 78px 0 28px;
     }
 
     .hero-copy,
     .hero-side,
     .section {
-      padding: 22px 18px;
-      border-radius: 24px;
+      padding: 18px 14px;
+      border-radius: 22px;
+    }
+
+    .hero {
+      gap: 14px;
+    }
+
+    .hero-copy {
+      padding-top: 20px;
+    }
+
+    .hero-copy::after {
+      width: 170px;
+      height: 170px;
+      right: -56px;
+      bottom: -56px;
     }
 
     .topline,
@@ -689,14 +1275,21 @@
       display: block;
     }
 
-    .profile-head,
     .topline {
       text-align: center;
     }
 
-    .logo-mark,
-    .profile-avatar {
+    .logo-mark {
       margin: 0 auto 12px;
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+    }
+
+    .eyebrow,
+    .tag {
+      font-size: 0.74rem;
+      padding: 7px 10px;
     }
 
     .badge-row,
@@ -704,12 +1297,24 @@
     .field-grid,
     .info-grid,
     .box-grid,
-    .mini-grid {
+    .hero-gallery,
+    .modal-box-grid {
       grid-template-columns: 1fr;
     }
 
+    .picker-card {
+      grid-template-columns: 1fr;
+    }
+
+    .picker-thumb {
+      width: 100%;
+      height: 180px;
+    }
+
     h1 {
-      font-size: 3.4rem;
+      margin-top: 12px;
+      font-size: 2.9rem;
+      line-height: 0.95;
       text-align: center;
     }
 
@@ -718,13 +1323,256 @@
       text-align: center;
     }
 
+    .subhead {
+      margin: 12px 0 18px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .topline h2 {
+      font-size: 2rem;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .info-pill {
+      padding: 14px;
+      border-radius: 18px;
+    }
+
+    .info-pill span {
+      font-size: 0.94rem;
+    }
+
     .cta-row {
+      display: grid;
+      grid-template-columns: 1fr;
       justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .shop-stage-pills {
+      grid-template-columns: 1fr;
+    }
+
+    .button-link,
+    button {
+      min-height: 52px;
+    }
+
+    .hero-side {
+      padding: 14px;
+    }
+
+    .hero-shot {
+      min-height: 280px;
+    }
+
+    .hero-stack-card {
+      min-height: 120px;
+    }
+
+    .hero-shot-badge {
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .hero-shot-badge strong,
+    .hero-note strong {
+      font-size: 1.08rem;
+    }
+
+    .hero-note {
+      padding: 14px;
+    }
+
+    .section {
+      margin-top: 16px;
+    }
+
+    .section-head {
+      margin-bottom: 14px;
+    }
+
+    .section-head h2 {
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .flavor-copy {
+      padding: 14px;
+    }
+
+    .flavor-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .flavor-card p {
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .price-tag {
+      font-size: 0.78rem;
+      margin-bottom: 8px;
+    }
+
+    .flavor-actions {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .shop-cart-button {
+      top: 10px;
+      right: 10px;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 18px;
+      box-shadow: 0 12px 24px rgba(45, 125, 175, 0.14);
+    }
+
+    .shop-cart-icon {
+      width: 22px;
+      height: 22px;
+    }
+
+    .shop-cart-button span:not(.shop-cart-count):not(.shop-cart-icon) {
+      font-size: 0.92rem;
+    }
+
+    .shop-cart-count {
+      min-width: 22px;
+      height: 22px;
+      font-size: 0.74rem;
+      padding: 0 6px;
+    }
+
+    .cart-item-line {
+      grid-template-columns: 56px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+    }
+
+    .cart-item-meta {
+      grid-column: 1 / -1;
+      justify-items: start;
+      padding-left: 0;
+      gap: 10px;
+    }
+
+    .cart-line-actions {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    #order-form {
+      width: 100%;
+    }
+
+    .drawer {
+      top: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-height: 94vh;
+      border-radius: 24px 24px 0 0;
+      transform: translateY(100%);
+      padding: 16px 14px calc(22px + env(safe-area-inset-bottom));
+    }
+
+    .drawer.show {
+      transform: translateY(0);
+    }
+
+    .cart-head {
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .cart-head h3 {
+      font-size: 1.45rem;
+      line-height: 1.1;
+    }
+
+    .summary-card,
+    .drawer-box-builder {
+      padding: 16px;
+      border-radius: 20px;
+    }
+
+    .summary-card h4,
+    .drawer-box-head h4 {
+      font-size: 1.16rem;
+    }
+
+    .modal-box-slot {
+      padding: 10px;
+      border-radius: 16px;
+    }
+
+    .modal-box-slot img {
+      height: 94px;
+      border-radius: 14px;
+      margin-bottom: 8px;
+    }
+
+    #checkoutForm {
+      margin-top: 14px;
+    }
+
+    #checkoutForm .field {
+      margin-bottom: 12px;
+    }
+
+    .modal-card {
+      width: min(100%, calc(100% - 16px));
+      max-height: 92vh;
+      padding: 16px;
+      border-radius: 22px;
+    }
+
+    .modal-top {
+      gap: 10px;
+    }
+
+    .payment-options.show {
+      grid-template-columns: 1fr;
+    }
+
+    .closing {
+      padding: 22px 16px;
+      margin-top: 16px;
+    }
+
+    .closing h2 {
+      font-size: 2rem;
+      line-height: 1.1;
     }
   }
 </style>
 </head>
 <body>
+  <button class="shop-cart-button" type="button" id="cartButton">
+    <span class="shop-cart-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="20" r="1"></circle>
+        <circle cx="18" cy="20" r="1"></circle>
+        <path d="M2 3h3l2.2 10.3a1 1 0 0 0 1 .7h9.8a1 1 0 0 0 1-.8L21 6H6"></path>
+      </svg>
+    </span>
+    <span>Cart</span>
+    <span class="shop-cart-count" id="cartCount">0</span>
+  </button>
+
   <main class="page">
     <section class="hero">
       <div class="hero-copy panel">
@@ -759,45 +1607,37 @@
         </div>
 
         <div class="cta-row">
-          <a class="button-link primary" href="#order-form">Reserve a Box</a>
           <a class="button-link secondary" href="#flavors">See Flavors</a>
         </div>
 
       </div>
 
       <aside class="hero-side panel">
-        <div class="profile-card">
-          <div class="profile-head">
-            <div class="profile-avatar">
-              <img src="logo.png" alt="Bakey Nook profile logo">
-            </div>
-            <div class="profile-meta">
-              <strong>Bakey Nook</strong>
-              <p>Home Bakery | CBO</p>
-              <p>By pre-order only</p>
+        <div class="hero-gallery">
+          <div class="hero-shot">
+            <img src="biscoff.png" alt="Bakey Nook Biscoff cookies">
+            <div class="hero-shot-badge">
+              <div>
+                <strong>Biscoff</strong>
+                <p>Premium cookie butter favorite.</p>
+              </div>
+              <span class="price-tag">P107</span>
             </div>
           </div>
 
-          <div class="mini-grid">
-            <div class="mini-card">
-              <strong>Best For</strong>
-              Small celebrations, cravings, and gift boxes
+          <div class="hero-stack">
+            <div class="hero-stack-card">
+              <img src="ogchocolatechip.png" alt="Bakey Nook OG Chocolate Chip cookies">
             </div>
-            <div class="mini-card">
-              <strong>Ordering Style</strong>
-              Easy form submission plus direct message follow-up
+            <div class="hero-stack-card">
+              <img src="redvelvet.png" alt="Bakey Nook Red Velvet cookies">
             </div>
-            <div class="mini-card">
-              <strong>Delivery</strong>
-              Pick-up or delivery arrangements available
-            </div>
-            <div class="mini-card">
-              <strong>Brand Vibe</strong>
-              Cozy, playful, and homemade with a polished look
+            <div class="hero-note">
+              <strong>Freshly baked</strong>
+              <p>Boxes and per-piece picks for cravings, gifts, and sweet little moments.</p>
             </div>
           </div>
         </div>
-
       </aside>
     </section>
 
@@ -806,221 +1646,321 @@
         <div>
           <span class="eyebrow">Cookie Lineup</span>
           <h2>Fan-favorite flavors</h2>
-          <p>Short, craveable descriptions to make each option feel more premium.</p>
+          <p>Fresh bakes from the Bakey Nook kitchen.</p>
         </div>
       </div>
 
       <div class="flavor-grid">
         <article class="flavor-card">
-          <h3>OG Choco Chip</h3>
-          <p>The classic comfort cookie with rich chocolate chips in every warm bite.</p>
+          <div class="flavor-photo">
+            <img src="ogchocolatechip.png" alt="OG Chocolate Chip cookies">
+          </div>
+          <div class="flavor-copy">
+            <span class="price-tag">P75 per piece</span>
+            <h3>OG Choco Chip</h3>
+            <p>Classic, chunky, and always a favorite.</p>
+            <div class="flavor-actions">
+              <button class="mini-action add-piece-button" type="button" data-flavor="OG Chocolate Chip">Add Piece</button>
+              <button class="mini-action add-box-button" type="button" data-flavor="OG Chocolate Chip">Add to Box</button>
+            </div>
+          </div>
         </article>
         <article class="flavor-card">
-          <h3>Red Velvet</h3>
-          <p>Soft, vibrant, and lightly cocoa-kissed with a bakery-style finish.</p>
+          <div class="flavor-photo">
+            <img src="redvelvet.png" alt="Red Velvet cookies">
+          </div>
+          <div class="flavor-copy">
+            <span class="price-tag">P75 per piece</span>
+            <h3>Red Velvet</h3>
+            <p>Soft-baked red velvet with a rich cocoa bite.</p>
+            <div class="flavor-actions">
+              <button class="mini-action add-piece-button" type="button" data-flavor="Red Velvet">Add Piece</button>
+              <button class="mini-action add-box-button" type="button" data-flavor="Red Velvet">Add to Box</button>
+            </div>
+          </div>
         </article>
         <article class="flavor-card">
-          <h3>Rocky Road</h3>
-          <p>A chunky crowd-pleaser packed with gooey, crunchy, chocolatey texture.</p>
+          <div class="flavor-photo">
+            <img src="rockyroad.png" alt="Rocky Road cookies">
+          </div>
+          <div class="flavor-copy">
+            <span class="price-tag">P75 per piece</span>
+            <h3>Rocky Road</h3>
+            <p>Chocolate-packed with a fun, loaded finish.</p>
+            <div class="flavor-actions">
+              <button class="mini-action add-piece-button" type="button" data-flavor="Rocky Road">Add Piece</button>
+              <button class="mini-action add-box-button" type="button" data-flavor="Rocky Road">Add to Box</button>
+            </div>
+          </div>
         </article>
         <article class="flavor-card">
-          <h3>Biscoff</h3>
-          <p>Deep caramel spice notes with that smooth cookie butter personality.</p>
+          <div class="flavor-photo">
+            <img src="biscoff.png" alt="Biscoff cookies">
+          </div>
+          <div class="flavor-copy">
+            <span class="price-tag">P107 per piece</span>
+            <h3>Biscoff</h3>
+            <p>Cookie butter flavor with a premium Biscoff finish.</p>
+            <div class="flavor-actions">
+              <button class="mini-action add-piece-button" type="button" data-flavor="Biscoff">Add Piece</button>
+              <button class="mini-action add-box-button" type="button" data-flavor="Biscoff">Add to Box</button>
+            </div>
+          </div>
         </article>
         <article class="flavor-card">
-          <h3>S'mores</h3>
-          <p>Campfire sweetness with melty chocolate and marshmallow-inspired flavor.</p>
+          <div class="flavor-photo">
+            <img src="smores.png" alt="Smores cookies">
+          </div>
+          <div class="flavor-copy">
+            <span class="price-tag">P75 per piece</span>
+            <h3>S'mores</h3>
+            <p>Sweet, toasted, and made for dessert cravings.</p>
+            <div class="flavor-actions">
+              <button class="mini-action add-piece-button" type="button" data-flavor="S'mores">Add Piece</button>
+              <button class="mini-action add-box-button" type="button" data-flavor="S'mores">Add to Box</button>
+            </div>
+          </div>
         </article>
         <article class="flavor-card">
-          <h3>Cookies N Cream</h3>
-          <p>Creamy vanilla cookie base with familiar crunch and dreamy sweetness.</p>
+          <div class="flavor-photo">
+            <img src="cookiesncream.png" alt="Cookies and Cream cookies">
+          </div>
+          <div class="flavor-copy">
+            <span class="price-tag">P75 per piece</span>
+            <h3>Cookies N Cream</h3>
+            <p>Creamy cookie goodness with a familiar crunch.</p>
+            <div class="flavor-actions">
+              <button class="mini-action add-piece-button" type="button" data-flavor="Cookies N Cream">Add Piece</button>
+              <button class="mini-action add-box-button" type="button" data-flavor="Cookies N Cream">Add to Box</button>
+            </div>
+          </div>
         </article>
         <article class="flavor-card">
-          <h3>Cinnamon</h3>
-          <p>Warm spice, soft center, and a cozy finish that feels freshly home-baked.</p>
+          <div class="flavor-photo">
+            <img src="cinnamon.png" alt="Cinnamon cookies">
+          </div>
+          <div class="flavor-copy">
+            <span class="price-tag">P75 per piece</span>
+            <h3>Cinnamon</h3>
+            <p>Warm spice and soft centers in every bite.</p>
+            <div class="flavor-actions">
+              <button class="mini-action add-piece-button" type="button" data-flavor="Cinnamon">Add Piece</button>
+              <button class="mini-action add-box-button" type="button" data-flavor="Cinnamon">Add to Box</button>
+            </div>
+          </div>
         </article>
         <article class="flavor-card">
-          <h3>Double Trouble</h3>
-          <p>An extra-rich chocolate option for people who want bold cookie energy.</p>
+          <div class="flavor-photo">
+            <img src="doubletrouble.png" alt="Double Trouble cookies">
+          </div>
+          <div class="flavor-copy">
+            <span class="price-tag">P75 per piece</span>
+            <h3>Double Trouble</h3>
+            <p>Extra rich and chocolatey from first bite to last.</p>
+            <div class="flavor-actions">
+              <button class="mini-action add-piece-button" type="button" data-flavor="Double Trouble">Add Piece</button>
+              <button class="mini-action add-box-button" type="button" data-flavor="Double Trouble">Add to Box</button>
+            </div>
+          </div>
         </article>
       </div>
     </section>
 
     <section class="section panel" id="order-form">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Pre-Order Form</span>
-          <h2>Reserve your next batch</h2>
+      <div class="order-layout shop-sidebar-only">
+        <div class="form-card home-hidden" aria-hidden="true">
+          <div class="shop-stage">
+            <div class="shop-stage-card">
+              <div class="shop-stage-copy">
+                <span class="eyebrow">Online Shop</span>
+                <h3>Fill your cart from the cookie lineup.</h3>
+                <p>Tap the flavor cards above, then head straight to checkout from your cart.</p>
+              </div>
+
+              <div class="shop-stage-pills">
+                <div class="shop-stage-pill">
+                  <strong>Per Piece</strong>
+                  <span>P75 regular</span>
+                </div>
+                <div class="shop-stage-pill">
+                  <strong>Biscoff</strong>
+                  <span>P107 premium</span>
+                </div>
+                <div class="shop-stage-pill">
+                  <strong>Box of 6</strong>
+                  <span>Starts at P437</span>
+                </div>
+              </div>
+
+              <div class="shop-stage-actions">
+                <button id="proceedCheckoutButton" type="button">Proceed to Checkout</button>
+                <a class="ghost-link" href="#flavors">Back to flavors</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="legacy-cart-state" aria-hidden="true">
+            <input id="product" type="text" readonly value="">
+            <select id="option">
+              <option value="Pcs" selected>Pcs</option>
+              <option value="Box of 6">Box of 6</option>
+            </select>
+            <p id="productHelp">Choose multiple flavors and quantity per flavor for per-piece orders.</p>
+
+            <div class="builder-shell">
+              <div class="box-builder show" id="pieceBuilder">
+                <h4>Per Piece Picks</h4>
+                <div class="picker-card">
+                  <div class="picker-thumb"><img id="piecePreview1" src="ogchocolatechip.png" alt="Flavor 1 preview"></div>
+                  <div class="picker-main field">
+                    <label for="pieceFlavor1">Flavor 1</label>
+                    <select id="pieceFlavor1" class="piece-flavor-select"></select>
+                    <div class="picker-meta">
+                      <span class="picker-pill price" id="piecePrice1">P75</span>
+                      <span class="picker-pill type">Per piece</span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="pieceQty1">Qty</label>
+                    <input id="pieceQty1" class="piece-qty-input" type="number" min="0" value="0">
+                  </div>
+                </div>
+                <div class="picker-card">
+                  <div class="picker-thumb"><img id="piecePreview2" src="redvelvet.png" alt="Flavor 2 preview"></div>
+                  <div class="picker-main field">
+                    <label for="pieceFlavor2">Flavor 2</label>
+                    <select id="pieceFlavor2" class="piece-flavor-select"></select>
+                    <div class="picker-meta">
+                      <span class="picker-pill price" id="piecePrice2">P75</span>
+                      <span class="picker-pill type">Per piece</span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="pieceQty2">Qty</label>
+                    <input id="pieceQty2" class="piece-qty-input" type="number" min="0" value="0">
+                  </div>
+                </div>
+                <div class="picker-card">
+                  <div class="picker-thumb"><img id="piecePreview3" src="rockyroad.png" alt="Flavor 3 preview"></div>
+                  <div class="picker-main field">
+                    <label for="pieceFlavor3">Flavor 3</label>
+                    <select id="pieceFlavor3" class="piece-flavor-select"></select>
+                    <div class="picker-meta">
+                      <span class="picker-pill price" id="piecePrice3">P75</span>
+                      <span class="picker-pill type">Per piece</span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="pieceQty3">Qty</label>
+                    <input id="pieceQty3" class="piece-qty-input" type="number" min="0" value="0">
+                  </div>
+                </div>
+                <div class="picker-card">
+                  <div class="picker-thumb"><img id="piecePreview4" src="biscoff.png" alt="Flavor 4 preview"></div>
+                  <div class="picker-main field">
+                    <label for="pieceFlavor4">Flavor 4</label>
+                    <select id="pieceFlavor4" class="piece-flavor-select"></select>
+                    <div class="picker-meta">
+                      <span class="picker-pill price" id="piecePrice4">P107</span>
+                      <span class="picker-pill type">Per piece</span>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="pieceQty4">Qty</label>
+                    <input id="pieceQty4" class="piece-qty-input" type="number" min="0" value="0">
+                  </div>
+                </div>
+              </div>
+
+              <div class="box-builder" id="boxBuilder">
+                <h4>Box of 6 Mix</h4>
+                <div class="box-grid">
+                  <div class="box-slot">
+                    <div class="box-slot-thumb"><img id="boxPreview1" src="logo.png" alt="Box slot 1 preview"></div>
+                    <div class="field">
+                      <label for="boxFlavor1">Cookie 1</label>
+                      <select id="boxFlavor1" class="box-flavor-select"></select>
+                    </div>
+                  </div>
+                  <div class="box-slot">
+                    <div class="box-slot-thumb"><img id="boxPreview2" src="logo.png" alt="Box slot 2 preview"></div>
+                    <div class="field">
+                      <label for="boxFlavor2">Cookie 2</label>
+                      <select id="boxFlavor2" class="box-flavor-select"></select>
+                    </div>
+                  </div>
+                  <div class="box-slot">
+                    <div class="box-slot-thumb"><img id="boxPreview3" src="logo.png" alt="Box slot 3 preview"></div>
+                    <div class="field">
+                      <label for="boxFlavor3">Cookie 3</label>
+                      <select id="boxFlavor3" class="box-flavor-select"></select>
+                    </div>
+                  </div>
+                  <div class="box-slot">
+                    <div class="box-slot-thumb"><img id="boxPreview4" src="logo.png" alt="Box slot 4 preview"></div>
+                    <div class="field">
+                      <label for="boxFlavor4">Cookie 4</label>
+                      <select id="boxFlavor4" class="box-flavor-select"></select>
+                    </div>
+                  </div>
+                  <div class="box-slot">
+                    <div class="box-slot-thumb"><img id="boxPreview5" src="logo.png" alt="Box slot 5 preview"></div>
+                    <div class="field">
+                      <label for="boxFlavor5">Cookie 5</label>
+                      <select id="boxFlavor5" class="box-flavor-select"></select>
+                    </div>
+                  </div>
+                  <div class="box-slot">
+                    <div class="box-slot-thumb"><img id="boxPreview6" src="logo.png" alt="Box slot 6 preview"></div>
+                    <div class="field">
+                      <label for="boxFlavor6">Cookie 6</label>
+                      <select id="boxFlavor6" class="box-flavor-select"></select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-meta">
+              <div class="field">
+                <label for="quantity" id="quantityLabel">Quantity</label>
+                <input id="quantity" name="quantity" type="number" min="1" placeholder="How many?" required>
+                <p class="helper-text" id="quantityHelp">How many pieces would you like in total?</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="order-layout">
-        <form class="form-card" onsubmit="submitOrder(event)">
-          <h3>Customer Details</h3>
-
-          <div class="field-grid">
-            <div class="field">
-              <label for="customerName">Customer Name</label>
-              <input id="customerName" name="customerName" placeholder="e.g. Maria Santos" required>
-            </div>
-
-            <div class="field">
-              <label for="mobile">Mobile Number</label>
-              <input id="mobile" name="mobile" placeholder="09XXXXXXXXX" required>
-            </div>
-          </div>
-
-          <div class="field-grid">
-            <div class="field">
-              <label for="product">Selection Summary</label>
-              <input id="product" name="product" readonly value="">
-              <p class="helper-text" id="productHelp">Choose multiple flavors and quantity per flavor for per-piece orders.</p>
-            </div>
-
-            <div class="field">
-              <label for="option">Order Type</label>
-              <select id="option" name="option" required>
-                <option value="Pcs">Per Piece</option>
-                <option value="Box of 6">Box of 6</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="box-builder show" id="pieceBuilder">
-            <h4>Build Your Per Piece Order</h4>
-            <p class="helper-text">Add the flavors you want, then set how many pieces for each one.</p>
-            <div class="piece-row">
-              <div class="field">
-                <label for="pieceFlavor1">Flavor 1</label>
-                <select id="pieceFlavor1" class="piece-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="pieceQty1">Qty</label>
-                <input id="pieceQty1" class="piece-qty-input" type="number" min="0" value="0">
-              </div>
-            </div>
-            <div class="piece-row">
-              <div class="field">
-                <label for="pieceFlavor2">Flavor 2</label>
-                <select id="pieceFlavor2" class="piece-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="pieceQty2">Qty</label>
-                <input id="pieceQty2" class="piece-qty-input" type="number" min="0" value="0">
-              </div>
-            </div>
-            <div class="piece-row">
-              <div class="field">
-                <label for="pieceFlavor3">Flavor 3</label>
-                <select id="pieceFlavor3" class="piece-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="pieceQty3">Qty</label>
-                <input id="pieceQty3" class="piece-qty-input" type="number" min="0" value="0">
-              </div>
-            </div>
-            <div class="piece-row">
-              <div class="field">
-                <label for="pieceFlavor4">Flavor 4</label>
-                <select id="pieceFlavor4" class="piece-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="pieceQty4">Qty</label>
-                <input id="pieceQty4" class="piece-qty-input" type="number" min="0" value="0">
-              </div>
-            </div>
-          </div>
-
-          <div class="box-builder" id="boxBuilder">
-            <h4>Build Your Box of 6</h4>
-            <p class="helper-text">Pick one flavor per slot. Puwede magkaiba bawat cookie sa isang box.</p>
-            <div class="box-grid">
-              <div class="field">
-                <label for="boxFlavor1">Cookie 1</label>
-                <select id="boxFlavor1" class="box-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="boxFlavor2">Cookie 2</label>
-                <select id="boxFlavor2" class="box-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="boxFlavor3">Cookie 3</label>
-                <select id="boxFlavor3" class="box-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="boxFlavor4">Cookie 4</label>
-                <select id="boxFlavor4" class="box-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="boxFlavor5">Cookie 5</label>
-                <select id="boxFlavor5" class="box-flavor-select"></select>
-              </div>
-              <div class="field">
-                <label for="boxFlavor6">Cookie 6</label>
-                <select id="boxFlavor6" class="box-flavor-select"></select>
-              </div>
-            </div>
-          </div>
-
-          <div class="field-grid">
-            <div class="field">
-              <label for="quantity" id="quantityLabel">Quantity</label>
-              <input id="quantity" name="quantity" type="number" min="1" placeholder="How many?" required>
-              <p class="helper-text" id="quantityHelp">How many pieces would you like in total?</p>
-            </div>
-
-            <div class="field">
-              <label for="pickupOrDelivery">Fulfillment</label>
-              <select id="pickupOrDelivery" name="pickupOrDelivery" required>
-                <option value="Pick-up">Pick-up</option>
-                <option value="Delivery">Delivery</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field-grid">
-            <div class="field">
-              <label for="date">Preferred Date</label>
-              <input id="date" name="date" type="date" required>
-            </div>
-
-            <div class="field">
-              <label for="notes">Order Notes</label>
-              <input id="notes" name="notes" placeholder="Landmark, request, or message">
-            </div>
-          </div>
-
-          <button id="submitButton" type="submit">Submit Pre-Order</button>
-          <p id="result" aria-live="polite"></p>
-        </form>
 
         <aside class="aside-card">
-          <h3>Order Summary</h3>
-          <p class="helper-text">Live preview ito ng order mo habang namimili ka.</p>
-
-          <div class="summary-card">
-            <h4>Breakdown</h4>
-            <p class="helper-text" id="summaryMode">Per piece pricing is based on your selected flavors.</p>
-            <div class="summary-lines" id="summaryLines">
-              <div class="summary-line">
-                <span>No items yet</span>
-                <span>P0</span>
+          <div class="checkout-panel">
+            <div class="checkout-box">
+              <h4>Cart Summary</h4>
+              <div class="checkout-stat">
+                <span>Items</span>
+                <span id="sidebarItemCount">0</span>
+              </div>
+              <div class="checkout-stat">
+                <span>Status</span>
+                <span id="sidebarSummaryMode">No items yet</span>
+              </div>
+              <div class="checkout-total">
+                <span>Total</span>
+                <span id="sidebarTotal">P0</span>
+              </div>
+              <div class="checkout-actions">
+                <button id="sidebarCheckoutButton" type="button">Check Out</button>
+                <button class="mini-action" id="sidebarViewCartButton" type="button">View cart</button>
               </div>
             </div>
-            <div class="summary-total">
-              <span>Total Payment</span>
-              <span id="summaryTotal">P0</span>
-            </div>
-          </div>
 
-          <div class="info-grid" style="margin-top:18px;">
-            <div class="mini-card">
-              <strong>Per Piece</strong>
-              Biscoff is P107. All other flavors are P75 each.
-            </div>
-            <div class="mini-card">
-              <strong>Box of 6</strong>
-              Starts at P437. Biscoff-heavy boxes follow the published stepped pricing.
+            <div class="summary-card">
+              <h4>Breakdown</h4>
+              <div class="summary-lines" id="summaryLines">
+                <div class="summary-line">
+                  <span>No items yet</span>
+                  <span>P0</span>
+                </div>
+              </div>
             </div>
           </div>
         </aside>
@@ -1033,6 +1973,128 @@
       <p>Made for sweet cravings, thoughtful gifts, and cozy cookie moments.</p>
     </section>
   </main>
+
+  <div class="drawer-backdrop" id="cartDrawerBackdrop"></div>
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-head">
+      <div>
+        <span class="eyebrow" id="drawerEyebrow">Your Cart</span>
+        <h3 id="drawerTitle" style="margin-top:8px;">Checkout preview</h3>
+      </div>
+      <button class="modal-close" type="button" id="closeDrawerButton">Close</button>
+    </div>
+
+    <div class="summary-card">
+      <h4>Breakdown</h4>
+      <p class="helper-text" id="drawerSummaryMode">Fresh picks from your cart.</p>
+      <div class="summary-lines" id="drawerSummaryLines">
+        <div class="summary-line">
+          <span>No items yet</span>
+          <span>P0</span>
+        </div>
+      </div>
+      <div class="summary-total">
+        <span>Total Payment</span>
+        <span id="drawerSummaryTotal">P0</span>
+      </div>
+    </div>
+
+    <div class="drawer-box-builder" id="drawerBoxBuilder">
+      <div class="drawer-box-head">
+        <h4>Build Your Box of 6</h4>
+        <p class="helper-text">Complete your mix here before placing the order.</p>
+      </div>
+
+      <div class="modal-box-grid">
+        <div class="modal-box-slot">
+          <img id="drawerBoxPreview1" src="logo.png" alt="Box slot 1 preview">
+          <div class="field">
+            <label for="drawerBoxFlavor1">Cookie 1</label>
+            <select id="drawerBoxFlavor1" class="drawer-box-flavor-select"></select>
+          </div>
+        </div>
+        <div class="modal-box-slot">
+          <img id="drawerBoxPreview2" src="logo.png" alt="Box slot 2 preview">
+          <div class="field">
+            <label for="drawerBoxFlavor2">Cookie 2</label>
+            <select id="drawerBoxFlavor2" class="drawer-box-flavor-select"></select>
+          </div>
+        </div>
+        <div class="modal-box-slot">
+          <img id="drawerBoxPreview3" src="logo.png" alt="Box slot 3 preview">
+          <div class="field">
+            <label for="drawerBoxFlavor3">Cookie 3</label>
+            <select id="drawerBoxFlavor3" class="drawer-box-flavor-select"></select>
+          </div>
+        </div>
+        <div class="modal-box-slot">
+          <img id="drawerBoxPreview4" src="logo.png" alt="Box slot 4 preview">
+          <div class="field">
+            <label for="drawerBoxFlavor4">Cookie 4</label>
+            <select id="drawerBoxFlavor4" class="drawer-box-flavor-select"></select>
+          </div>
+        </div>
+        <div class="modal-box-slot">
+          <img id="drawerBoxPreview5" src="logo.png" alt="Box slot 5 preview">
+          <div class="field">
+            <label for="drawerBoxFlavor5">Cookie 5</label>
+            <select id="drawerBoxFlavor5" class="drawer-box-flavor-select"></select>
+          </div>
+        </div>
+        <div class="modal-box-slot">
+          <img id="drawerBoxPreview6" src="logo.png" alt="Box slot 6 preview">
+          <div class="field">
+            <label for="drawerBoxFlavor6">Cookie 6</label>
+            <select id="drawerBoxFlavor6" class="drawer-box-flavor-select"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:14px;">
+        <label>Box Sets</label>
+        <p class="helper-text">Add one completed mix at a time, then build another set if needed.</p>
+      </div>
+    </div>
+
+    <button id="drawerPrimaryButton" class="drawer-primary-action" type="button">Add to Cart</button>
+
+    <form id="checkoutForm" style="margin-top:16px;">
+      <div class="field-grid">
+        <div class="field">
+          <label for="customerName">Customer Name</label>
+          <input id="customerName" name="customerName" placeholder="e.g. Maria Santos" required>
+        </div>
+
+        <div class="field">
+          <label for="mobile">Mobile Number</label>
+          <input id="mobile" name="mobile" placeholder="09XXXXXXXXX" required>
+        </div>
+      </div>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="pickupOrDelivery">Fulfillment</label>
+          <select id="pickupOrDelivery" name="pickupOrDelivery" required>
+            <option value="Pick-up">Pick-up</option>
+            <option value="Delivery">Delivery</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="date">Preferred Date</label>
+          <input id="date" name="date" type="date" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="notes">Order Notes</label>
+        <input id="notes" name="notes" placeholder="Landmark, request, or message">
+      </div>
+
+      <button id="submitButton" type="submit" style="margin-top:8px;">Place Order</button>
+      <p id="result" aria-live="polite"></p>
+    </form>
+  </aside>
 
   <div class="modal" id="paymentModal" aria-hidden="true">
     <div class="modal-card">
@@ -1073,7 +2135,26 @@
   const API_URL = "https://script.google.com/macros/s/AKfycbye3_nNvago7qnMauaDy5r-vZLXLHutHmNEC1HzxKqtZHHx7W0tw5Hkj7V67k9t6T5U/exec";
 
   const result = document.getElementById("result");
+  const checkoutForm = document.getElementById("checkoutForm");
+  const proceedCheckoutButton = document.getElementById("proceedCheckoutButton");
   const submitButton = document.getElementById("submitButton");
+  const cartButton = document.getElementById("cartButton");
+  const cartCount = document.getElementById("cartCount");
+  const cartDrawer = document.getElementById("cartDrawer");
+  const cartDrawerBackdrop = document.getElementById("cartDrawerBackdrop");
+  const closeDrawerButton = document.getElementById("closeDrawerButton");
+  const drawerEyebrow = document.getElementById("drawerEyebrow");
+  const drawerTitle = document.getElementById("drawerTitle");
+  const sidebarCheckoutButton = document.getElementById("sidebarCheckoutButton");
+  const sidebarViewCartButton = document.getElementById("sidebarViewCartButton");
+  const sidebarItemCount = document.getElementById("sidebarItemCount");
+  const sidebarSummaryMode = document.getElementById("sidebarSummaryMode");
+  const sidebarTotal = document.getElementById("sidebarTotal");
+  const drawerSummaryMode = document.getElementById("drawerSummaryMode");
+  const drawerSummaryLines = document.getElementById("drawerSummaryLines");
+  const drawerSummaryTotal = document.getElementById("drawerSummaryTotal");
+  const drawerBoxBuilder = document.getElementById("drawerBoxBuilder");
+  const drawerPrimaryButton = document.getElementById("drawerPrimaryButton");
   const dateInput = document.getElementById("date");
   const orderTypeSelect = document.getElementById("option");
   const productSelect = document.getElementById("product");
@@ -1083,9 +2164,7 @@
   const quantityInput = document.getElementById("quantity");
   const quantityLabel = document.getElementById("quantityLabel");
   const quantityHelp = document.getElementById("quantityHelp");
-  const summaryMode = document.getElementById("summaryMode");
   const summaryLines = document.getElementById("summaryLines");
-  const summaryTotal = document.getElementById("summaryTotal");
   const paymentModal = document.getElementById("paymentModal");
   const modalSummaryLines = document.getElementById("modalSummaryLines");
   const modalSummaryTotal = document.getElementById("modalSummaryTotal");
@@ -1100,6 +2179,37 @@
   const boxFlavorSelects = Array.from(document.querySelectorAll(".box-flavor-select"));
   const pieceFlavorSelects = Array.from(document.querySelectorAll(".piece-flavor-select"));
   const pieceQtyInputs = Array.from(document.querySelectorAll(".piece-qty-input"));
+  const piecePreviewImages = [
+    document.getElementById("piecePreview1"),
+    document.getElementById("piecePreview2"),
+    document.getElementById("piecePreview3"),
+    document.getElementById("piecePreview4")
+  ];
+  const piecePricePills = [
+    document.getElementById("piecePrice1"),
+    document.getElementById("piecePrice2"),
+    document.getElementById("piecePrice3"),
+    document.getElementById("piecePrice4")
+  ];
+  const boxPreviewImages = [
+    document.getElementById("boxPreview1"),
+    document.getElementById("boxPreview2"),
+    document.getElementById("boxPreview3"),
+    document.getElementById("boxPreview4"),
+    document.getElementById("boxPreview5"),
+    document.getElementById("boxPreview6")
+  ];
+  const drawerBoxFlavorSelects = Array.from(document.querySelectorAll(".drawer-box-flavor-select"));
+  const drawerBoxPreviewImages = [
+    document.getElementById("drawerBoxPreview1"),
+    document.getElementById("drawerBoxPreview2"),
+    document.getElementById("drawerBoxPreview3"),
+    document.getElementById("drawerBoxPreview4"),
+    document.getElementById("drawerBoxPreview5"),
+    document.getElementById("drawerBoxPreview6")
+  ];
+  const addPieceButtons = Array.from(document.querySelectorAll(".add-piece-button"));
+  const addBoxButtons = Array.from(document.querySelectorAll(".add-box-button"));
   const flavorPrices = {
     "OG Chocolate Chip": 75,
     "Red Velvet": 75,
@@ -1118,6 +2228,16 @@
     4: 564,
     5: 595,
     6: 627
+  };
+  const flavorImages = {
+    "OG Chocolate Chip": "ogchocolatechip.png",
+    "Red Velvet": "redvelvet.png",
+    "Rocky Road": "rockyroad.png",
+    "Biscoff": "biscoff.png",
+    "S'mores": "smores.png",
+    "Cookies N Cream": "cookiesncream.png",
+    "Cinnamon": "cinnamon.png",
+    "Double Trouble": "doubletrouble.png"
   };
   const paymentConfig = {
     gcash: {
@@ -1150,6 +2270,8 @@
     "Cinnamon",
     "Double Trouble"
   ];
+  let drawerMode = "cart";
+  let committedBoxSets = [];
 
   dateInput.min = new Date().toISOString().split("T")[0];
 
@@ -1163,11 +2285,11 @@
 
   function populateBoxFlavorSelects() {
     boxFlavorSelects.forEach((select, index) => {
-      select.innerHTML = flavors
-        .map((flavor) => `<option value="${flavor}">${flavor}</option>`)
+      select.innerHTML = ['<option value="">Choose flavor</option>']
+        .concat(flavors.map((flavor) => `<option value="${flavor}">${flavor}</option>`))
         .join("");
 
-      select.value = flavors[index % flavors.length];
+      select.value = "";
     });
   }
 
@@ -1179,6 +2301,71 @@
 
       select.value = flavors[index % flavors.length];
     });
+
+    syncPiecePreviews();
+  }
+
+  function populateDrawerBoxFlavorSelects() {
+    drawerBoxFlavorSelects.forEach((select) => {
+      select.innerHTML = ['<option value="">Choose flavor</option>']
+        .concat(flavors.map((flavor) => `<option value="${flavor}">${flavor}</option>`))
+        .join("");
+
+      select.value = "";
+    });
+  }
+
+  function syncPiecePreviews() {
+    pieceFlavorSelects.forEach((select, index) => {
+      const flavor = select.value;
+      if (piecePreviewImages[index]) {
+        piecePreviewImages[index].src = flavorImages[flavor];
+        piecePreviewImages[index].alt = flavor + " preview";
+      }
+
+      if (piecePricePills[index]) {
+        piecePricePills[index].textContent = formatPeso(flavorPrices[flavor]);
+      }
+    });
+  }
+
+  function syncBoxPreviews() {
+    boxFlavorSelects.forEach((select, index) => {
+      const flavor = select.value;
+      if (!boxPreviewImages[index]) {
+        return;
+      }
+
+      boxPreviewImages[index].src = flavor ? flavorImages[flavor] : "logo.png";
+      boxPreviewImages[index].alt = flavor ? flavor + " preview" : "Empty box slot preview";
+    });
+  }
+
+  function syncDrawerBoxPreviews() {
+    drawerBoxFlavorSelects.forEach((select, index) => {
+      const flavor = select.value;
+      if (!drawerBoxPreviewImages[index]) {
+        return;
+      }
+
+      drawerBoxPreviewImages[index].src = flavor ? flavorImages[flavor] : "logo.png";
+      drawerBoxPreviewImages[index].alt = flavor ? flavor + " preview" : "Empty box slot preview";
+    });
+  }
+
+  function syncDrawerBoxBuilder() {
+    const isBoxOrder = orderTypeSelect.value === "Box of 6";
+    drawerBoxBuilder.classList.toggle("show", isBoxOrder);
+
+    if (!isBoxOrder) {
+      return;
+    }
+
+    drawerBoxFlavorSelects.forEach((select, index) => {
+      select.value = boxFlavorSelects[index].value;
+    });
+
+    syncDrawerBoxPreviews();
   }
 
   function syncOrderTypeUI() {
@@ -1189,19 +2376,19 @@
     productSelect.readOnly = true;
     quantityInput.required = isBoxOrder;
     quantityInput.disabled = !isBoxOrder;
-    quantityLabel.textContent = isBoxOrder ? "Number of Boxes" : "Total Quantity";
+    quantityLabel.textContent = isBoxOrder ? "Ready Box Sets" : "Total Quantity";
     quantityHelp.textContent = isBoxOrder
-      ? "Enter how many boxes of 6 you want."
-      : "";
+      ? "Based on the completed box sets you add to cart."
+      : "Automatically based on the per-piece quantities above.";
     productHelp.textContent = isBoxOrder
-      ? "Mixed box mode is on. Use the six selectors below to choose each cookie flavor."
+      ? "Fill all 6 slots for your mixed box."
       : "Choose multiple flavors and quantity per flavor for per-piece orders.";
 
     if (!isBoxOrder) {
       quantityInput.value = getPerPieceTotal();
       productSelect.value = getPerPieceSelections().map((item) => `${item.flavor} x${item.qty}`).join(", ") || "";
     } else if (!quantityInput.value) {
-      quantityInput.value = "1";
+      quantityInput.value = String(committedBoxSets.length || 0);
       productSelect.value = "Mixed Box of 6";
     } else {
       productSelect.value = "Mixed Box of 6";
@@ -1213,6 +2400,7 @@
   function getPerPieceSelections() {
     return pieceFlavorSelects
       .map((select, index) => ({
+        rowIndex: index,
         flavor: select.value,
         qty: Number(pieceQtyInputs[index].value || 0)
       }))
@@ -1227,51 +2415,303 @@
     return getPerPieceSelections().reduce((sum, item) => sum + (flavorPrices[item.flavor] * item.qty), 0);
   }
 
-  function getBoxSelections() {
-    return boxFlavorSelects.map((select) => select.value);
+  function getDraftBoxSelections() {
+    return boxFlavorSelects.map((select) => select.value).filter(Boolean);
   }
 
-  function getBoxUnitPrice() {
-    const biscoffCount = getBoxSelections().filter((flavor) => flavor === "Biscoff").length;
+  function getBoxUnitPriceForSelections(selections) {
+    const biscoffCount = selections.filter((flavor) => flavor === "Biscoff").length;
     return boxPricesByBiscoffCount[biscoffCount];
   }
 
-  function getBoxTotalAmount() {
-    return getBoxUnitPrice() * Number(quantityInput.value || 0);
+  function getDraftBoxUnitPrice() {
+    return getBoxUnitPriceForSelections(getDraftBoxSelections());
+  }
+
+  function getCommittedBoxTotalAmount() {
+    return committedBoxSets.reduce((sum, set) => sum + set.unitPrice, 0);
+  }
+
+  function clearDraftBoxSelections() {
+    boxFlavorSelects.forEach((select) => {
+      select.value = "";
+    });
+    syncBoxPreviews();
+  }
+
+  function getCartCountValue() {
+    return orderTypeSelect.value === "Box of 6"
+      ? committedBoxSets.length * 6
+      : getPerPieceTotal();
+  }
+
+  function updateCartBadge() {
+    cartCount.textContent = String(getCartCountValue());
+  }
+
+  function syncDrawerSummary() {
+    drawerSummaryMode.textContent = sidebarSummaryMode.textContent;
+    drawerSummaryLines.innerHTML = summaryLines.innerHTML;
+    drawerSummaryTotal.textContent = sidebarTotal.textContent;
+  }
+
+  function renderCartItemLine(flavor, meta, priceText, actionsHtml = "") {
+    return `
+      <div class="cart-item-line">
+        <div class="cart-item-thumb"><img src="${flavorImages[flavor] || "logo.png"}" alt="${flavor}"></div>
+        <div class="cart-item-copy">
+          <strong>${flavor}</strong>
+          <span>${meta}</span>
+        </div>
+        <div class="cart-item-meta">
+          <div class="cart-item-price">${priceText}</div>
+          ${actionsHtml ? `<div class="cart-line-actions">${actionsHtml}</div>` : `<div class="cart-item-spacer"></div>`}
+        </div>
+      </div>
+    `;
+  }
+
+  function syncDrawerModeUI() {
+    const isBoxOrder = orderTypeSelect.value === "Box of 6";
+    const hasPerPieceItems = getPerPieceTotal() > 0;
+    const hasBoxItems = committedBoxSets.length > 0;
+    const hasItems = isBoxOrder ? hasBoxItems : hasPerPieceItems;
+    const isCompleteBox = getDraftBoxSelections().length === 6;
+
+    if (drawerMode === "checkout") {
+      drawerEyebrow.textContent = "Checkout";
+      drawerTitle.textContent = "Customer Details";
+    } else if (isBoxOrder) {
+      drawerEyebrow.textContent = "Box of 6";
+      drawerTitle.textContent = "Build Your Box";
+    } else {
+      drawerEyebrow.textContent = "Your Cart";
+      drawerTitle.textContent = "Review Your Picks";
+    }
+
+    drawerBoxBuilder.classList.toggle("checkout-hidden", drawerMode === "checkout");
+    checkoutForm.style.display = drawerMode === "checkout" ? "block" : "none";
+    drawerPrimaryButton.style.display = drawerMode === "checkout" ? "none" : "block";
+
+    if (drawerMode === "checkout") {
+      return;
+    }
+
+    if (isBoxOrder) {
+      if (isCompleteBox) {
+        drawerPrimaryButton.textContent = "Add Box Set";
+        drawerPrimaryButton.disabled = false;
+        drawerPrimaryButton.style.opacity = "1";
+      } else if (committedBoxSets.length) {
+        drawerPrimaryButton.textContent = "Continue to Checkout";
+        drawerPrimaryButton.disabled = false;
+        drawerPrimaryButton.style.opacity = "1";
+      } else {
+        drawerPrimaryButton.textContent = "Complete Your Box";
+        drawerPrimaryButton.disabled = true;
+        drawerPrimaryButton.style.opacity = "0.6";
+      }
+      return;
+    }
+
+    drawerPrimaryButton.textContent = "Continue to Checkout";
+    drawerPrimaryButton.disabled = !hasItems;
+    drawerPrimaryButton.style.opacity = hasItems ? "1" : "0.6";
+  }
+
+  function openCartDrawer(mode = "cart") {
+    drawerMode = mode;
+    syncDrawerSummary();
+    syncDrawerBoxBuilder();
+    syncDrawerModeUI();
+    cartDrawer.classList.add("show");
+    cartDrawerBackdrop.classList.add("show");
+    cartDrawer.setAttribute("aria-hidden", "false");
+  }
+
+  function closeCartDrawer() {
+    cartDrawer.classList.remove("show");
+    cartDrawerBackdrop.classList.remove("show");
+    cartDrawer.setAttribute("aria-hidden", "true");
+  }
+
+  function addPieceToCart(flavor) {
+    orderTypeSelect.value = "Pcs";
+    syncOrderTypeUI();
+
+    const existingIndex = pieceFlavorSelects.findIndex((select, index) => select.value === flavor && Number(pieceQtyInputs[index].value || 0) > 0);
+    if (existingIndex >= 0) {
+      pieceQtyInputs[existingIndex].value = String(Number(pieceQtyInputs[existingIndex].value || 0) + 1);
+      syncPerPieceTotal();
+      openCartDrawer("cart");
+      return;
+    }
+
+    const emptyIndex = pieceQtyInputs.findIndex((input) => Number(input.value || 0) === 0);
+    if (emptyIndex >= 0) {
+      pieceFlavorSelects[emptyIndex].value = flavor;
+      pieceQtyInputs[emptyIndex].value = "1";
+      syncPerPieceTotal();
+      openCartDrawer("cart");
+      return;
+    }
+
+    setStatus("info", "Your per-piece cart is full for now. You can adjust the rows below.");
+    openCartDrawer("cart");
+  }
+
+  function addFlavorToBox(flavor) {
+    orderTypeSelect.value = "Box of 6";
+    syncOrderTypeUI();
+
+    const emptySlot = boxFlavorSelects.find((select) => !select.value);
+    if (emptySlot) {
+      emptySlot.value = flavor;
+      updateOrderSummary();
+      openCartDrawer("cart");
+      return;
+    }
+
+    setStatus("info", "Your Box of 6 is already full. You can change the mix below.");
+    openCartDrawer("cart");
   }
 
   function updateOrderSummary() {
     const isBoxOrder = orderTypeSelect.value === "Box of 6";
 
     if (isBoxOrder) {
-      const boxSelections = getBoxSelections();
-      const flavorCounts = boxSelections.reduce((counts, flavor) => {
-        counts[flavor] = (counts[flavor] || 0) + 1;
-        return counts;
-      }, {});
-      const boxCount = Number(quantityInput.value || 0);
-      const boxUnitPrice = getBoxUnitPrice();
-      const lines = Object.entries(flavorCounts)
-        .map(([flavor, count]) => `<div class="summary-line"><span>${flavor} x${count} per box</span><span>Included</span></div>`)
+      const draftSelections = getDraftBoxSelections();
+      const isCompleteBox = draftSelections.length === 6;
+      const committedLines = committedBoxSets
+        .map((set, index) => {
+          const setSummary = set.flavors.join(", ");
+          return renderCartItemLine(
+            set.flavors[0],
+            `Box Set ${index + 1}<br>${setSummary}`,
+            formatPeso(set.unitPrice),
+            `<button class="cart-line-button" type="button" data-action="edit-box-set" data-index="${index}">Edit</button>
+             <button class="cart-line-button remove" type="button" data-action="remove-box-set" data-index="${index}">Remove</button>`
+          );
+        })
         .join("");
 
-      summaryMode.textContent = "Box of 6 starts at P437. Biscoff count adjusts the box price using the published pricing table.";
+      if (isCompleteBox) {
+        sidebarSummaryMode.textContent = "This box is ready. Add it as a new box set or keep building.";
+      } else if (committedBoxSets.length) {
+        sidebarSummaryMode.textContent = "Build another box set or continue to checkout.";
+      } else {
+        sidebarSummaryMode.textContent = "Pick all 6 flavors to complete your box.";
+      }
+
       summaryLines.innerHTML =
-        lines +
-        `<div class="summary-line"><span>Box price</span><span>${formatPeso(boxUnitPrice)}</span></div>` +
-        `<div class="summary-line"><span>Number of boxes</span><span>${boxCount || 0}</span></div>`;
-      summaryTotal.textContent = formatPeso(getBoxTotalAmount());
+        (committedLines || `<div class="summary-line"><span>No box sets yet</span><span>${formatPeso(0)}</span></div>`) +
+        `<div class="summary-line"><span>Ready box sets</span><span>${committedBoxSets.length}</span></div>`;
+      sidebarTotal.textContent = formatPeso(getCommittedBoxTotalAmount());
+      sidebarItemCount.textContent = String(getCartCountValue());
+      syncBoxPreviews();
+      updateCartBadge();
+      syncDrawerSummary();
+      syncDrawerBoxBuilder();
+      syncDrawerModeUI();
       return;
     }
 
     const selections = getPerPieceSelections();
-    summaryMode.textContent = "Per piece pricing is based on your selected flavors.";
+    sidebarSummaryMode.textContent = selections.length ? "Fresh picks from your cart." : "No items yet";
     summaryLines.innerHTML = selections.length
       ? selections
-          .map((item) => `<div class="summary-line"><span>${item.flavor} x${item.qty}</span><span>${formatPeso(flavorPrices[item.flavor] * item.qty)}</span></div>`)
+          .map((item) => renderCartItemLine(
+            item.flavor,
+            `Qty ${item.qty}`,
+            formatPeso(flavorPrices[item.flavor] * item.qty),
+            `<button class="cart-line-button" type="button" data-action="piece-minus" data-index="${item.rowIndex}">-</button>
+             <span class="cart-line-qty">${item.qty}</span>
+             <button class="cart-line-button" type="button" data-action="piece-plus" data-index="${item.rowIndex}">+</button>`
+          ))
           .join("")
       : `<div class="summary-line"><span>No items yet</span><span>${formatPeso(0)}</span></div>`;
-    summaryTotal.textContent = formatPeso(getPerPieceAmount());
+    sidebarTotal.textContent = formatPeso(getPerPieceAmount());
+    sidebarItemCount.textContent = String(getCartCountValue());
+    updateCartBadge();
+    syncDrawerSummary();
+    syncDrawerBoxBuilder();
+    syncDrawerModeUI();
+  }
+
+  function addCurrentBoxSet() {
+    const draftSelections = getDraftBoxSelections();
+
+    if (draftSelections.length !== 6) {
+      setStatus("info", "Complete all 6 flavors first before adding a box set.");
+      return;
+    }
+
+    committedBoxSets.push({
+      flavors: [...draftSelections],
+      unitPrice: getDraftBoxUnitPrice()
+    });
+
+    clearDraftBoxSelections();
+    quantityInput.value = String(committedBoxSets.length);
+    setStatus("success", `Box Set ${committedBoxSets.length} added to cart.`);
+    updateOrderSummary();
+  }
+
+  function loadBoxSetIntoDraft(boxSet) {
+    orderTypeSelect.value = "Box of 6";
+    boxFlavorSelects.forEach((select, index) => {
+      select.value = boxSet.flavors[index] || "";
+    });
+    syncBoxPreviews();
+  }
+
+  function handleCartActionButton(target) {
+    const action = target.dataset.action;
+    const index = Number(target.dataset.index || -1);
+
+    if (!action || index < 0) {
+      return;
+    }
+
+    if (action === "remove-box-set") {
+      committedBoxSets.splice(index, 1);
+      quantityInput.value = String(committedBoxSets.length);
+      updateOrderSummary();
+      return;
+    }
+
+    if (action === "edit-box-set") {
+      const selectedSet = committedBoxSets[index];
+      if (!selectedSet) {
+        return;
+      }
+
+      committedBoxSets.splice(index, 1);
+      loadBoxSetIntoDraft(selectedSet);
+      quantityInput.value = String(committedBoxSets.length);
+      setStatus("info", `Box Set ${index + 1} is ready to edit.`);
+      updateOrderSummary();
+      openCartDrawer("cart");
+      return;
+    }
+
+    if (action === "piece-minus") {
+      const nextQty = Math.max(0, Number(pieceQtyInputs[index].value || 0) - 1);
+      pieceQtyInputs[index].value = String(nextQty);
+      syncPerPieceTotal();
+      return;
+    }
+
+    if (action === "piece-plus") {
+      pieceQtyInputs[index].value = String(Number(pieceQtyInputs[index].value || 0) + 1);
+      syncPerPieceTotal();
+      return;
+    }
+
+    if (action === "piece-remove") {
+      pieceQtyInputs[index].value = "0";
+      syncPerPieceTotal();
+    }
   }
 
   function openPaymentModal(orderData) {
@@ -1317,6 +2757,7 @@
       productSelect.value = getPerPieceSelections().map((item) => `${item.flavor} x${item.qty}`).join(", ") || "";
     }
 
+    syncPiecePreviews();
     updateOrderSummary();
   }
 
@@ -1325,21 +2766,50 @@
     result.textContent = message;
   }
 
+  function openCheckoutView() {
+    const isBoxOrder = orderTypeSelect.value === "Box of 6";
+
+    if (isBoxOrder && !committedBoxSets.length) {
+      setStatus("info", "Add at least one completed box set first before checkout.");
+      openCartDrawer("cart");
+      return;
+    }
+
+    if (!isBoxOrder && getPerPieceTotal() <= 0) {
+      setStatus("info", "Add at least one cookie first before checkout.");
+      openCartDrawer("cart");
+      return;
+    }
+
+    openCartDrawer("checkout");
+  }
+
+  function openCartFromHeader() {
+    const isBoxOrder = orderTypeSelect.value === "Box of 6";
+    const hasCompleteBox = isBoxOrder && committedBoxSets.length > 0;
+    const hasPerPieceItems = !isBoxOrder && getPerPieceTotal() > 0;
+
+    if (hasCompleteBox || hasPerPieceItems) {
+      openCheckoutView();
+      return;
+    }
+
+    openCartDrawer("cart");
+  }
+
   async function submitOrder(event) {
     event.preventDefault();
 
     const isBoxOrder = orderTypeSelect.value === "Box of 6";
     const perPieceSelections = isBoxOrder ? [] : getPerPieceSelections();
     const perPieceTotal = isBoxOrder ? 0 : getPerPieceTotal();
-    const boxSelections = isBoxOrder
-      ? getBoxSelections()
-      : [];
+    const boxSets = isBoxOrder ? committedBoxSets : [];
     const flavorSummary = isBoxOrder
-      ? "Mixed Box of 6: " + boxSelections.join(", ")
+      ? boxSets.map((set, index) => `Box ${index + 1}: ${set.flavors.join(", ")}`).join(" || ")
       : perPieceSelections.map((item) => `${item.flavor} x${item.qty}`).join(", ");
     const notesField = document.getElementById("notes").value.trim();
-    const finalQuantity = isBoxOrder ? quantityInput.value : String(perPieceTotal);
-    const totalAmount = isBoxOrder ? getBoxTotalAmount() : getPerPieceAmount();
+    const finalQuantity = isBoxOrder ? String(boxSets.length) : String(perPieceTotal);
+    const totalAmount = isBoxOrder ? getCommittedBoxTotalAmount() : getPerPieceAmount();
 
     const data = {
       clientOrderRef: generateClientOrderRef(),
@@ -1352,7 +2822,7 @@
       date: document.getElementById("date").value,
       amount: totalAmount,
       notes: isBoxOrder
-        ? [notesField, "Flavor mix: " + boxSelections.join(", "), "Total: " + formatPeso(totalAmount)].filter(Boolean).join(" | ")
+        ? [notesField].concat(boxSets.map((set, index) => `Box ${index + 1}: ${set.flavors.join(", ")}`)).concat(["Total: " + formatPeso(totalAmount)]).filter(Boolean).join(" | ")
         : [notesField, "Per piece mix: " + flavorSummary, "Total: " + formatPeso(totalAmount)].filter(Boolean).join(" | ")
     };
 
@@ -1363,6 +2833,11 @@
 
     if (!isBoxOrder && perPieceTotal < 1) {
       setStatus("error", "Please complete the required fields before submitting.");
+      return;
+    }
+
+    if (isBoxOrder && !boxSets.length) {
+      setStatus("error", "Please add at least one completed box set before checkout.");
       return;
     }
 
@@ -1382,12 +2857,15 @@
         "Pre-order sent. Bakey Nook can now review your request and confirm the details with you."
       );
 
+      closeCartDrawer();
       openPaymentModal(data);
 
       event.target.reset();
+      committedBoxSets = [];
       dateInput.min = new Date().toISOString().split("T")[0];
       populatePieceFlavorSelects();
       populateBoxFlavorSelects();
+      populateDrawerBoxFlavorSelects();
       syncOrderTypeUI();
     } catch (error) {
       setStatus("error", "Something went wrong while sending your order. Please try again.");
@@ -1400,12 +2878,52 @@
 
   populatePieceFlavorSelects();
   populateBoxFlavorSelects();
+  populateDrawerBoxFlavorSelects();
   syncOrderTypeUI();
   orderTypeSelect.addEventListener("change", syncOrderTypeUI);
   pieceQtyInputs.forEach((input) => input.addEventListener("input", syncPerPieceTotal));
   pieceFlavorSelects.forEach((select) => select.addEventListener("change", syncPerPieceTotal));
   boxFlavorSelects.forEach((select) => select.addEventListener("change", updateOrderSummary));
+  drawerBoxFlavorSelects.forEach((select, index) => {
+    select.addEventListener("change", () => {
+      boxFlavorSelects[index].value = select.value;
+      updateOrderSummary();
+    });
+  });
+  [summaryLines, drawerSummaryLines].forEach((container) => {
+    container.addEventListener("click", (event) => {
+      const target = event.target.closest("[data-action]");
+      if (!target) {
+        return;
+      }
+
+      handleCartActionButton(target);
+    });
+  });
   quantityInput.addEventListener("input", updateOrderSummary);
+  checkoutForm.addEventListener("submit", submitOrder);
+  drawerPrimaryButton.addEventListener("click", () => {
+    if (orderTypeSelect.value === "Box of 6") {
+      if (getDraftBoxSelections().length === 6) {
+        addCurrentBoxSet();
+      } else if (committedBoxSets.length) {
+        openCheckoutView();
+      } else {
+        setStatus("info", "Complete all 6 flavors first before checkout.");
+      }
+      return;
+    }
+
+    openCheckoutView();
+  });
+  cartButton.addEventListener("click", openCartFromHeader);
+  proceedCheckoutButton.addEventListener("click", () => openCartDrawer("cart"));
+  sidebarCheckoutButton.addEventListener("click", openCheckoutView);
+  sidebarViewCartButton.addEventListener("click", () => openCartDrawer("cart"));
+  closeDrawerButton.addEventListener("click", closeCartDrawer);
+  cartDrawerBackdrop.addEventListener("click", closeCartDrawer);
+  addPieceButtons.forEach((button) => button.addEventListener("click", () => addPieceToCart(button.dataset.flavor)));
+  addBoxButtons.forEach((button) => button.addEventListener("click", () => addFlavorToBox(button.dataset.flavor)));
   payNowButton.addEventListener("click", () => paymentOptions.classList.add("show"));
   closeModalButton.addEventListener("click", closePaymentModal);
   paymentModal.addEventListener("click", (event) => {
