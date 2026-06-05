@@ -481,6 +481,89 @@
     color: var(--blue-deep);
   }
 
+  .modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgba(19, 36, 51, 0.55);
+    backdrop-filter: blur(6px);
+    z-index: 20;
+  }
+
+  .modal.show {
+    display: flex;
+  }
+
+  .modal-card {
+    width: min(680px, 100%);
+    max-height: 90vh;
+    overflow: auto;
+    padding: 24px;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(255, 252, 240, 0.98), rgba(255, 255, 255, 0.98));
+    border: 1px solid rgba(45, 125, 175, 0.16);
+    box-shadow: 0 28px 70px rgba(19, 36, 51, 0.28);
+  }
+
+  .modal-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .modal-close {
+    width: auto;
+    min-width: 44px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    border: 1px solid var(--line);
+    box-shadow: none;
+  }
+
+  .payment-options {
+    display: none;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .payment-options.show {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .payment-detail {
+    display: none;
+    margin-top: 16px;
+    padding: 18px;
+    border-radius: 22px;
+    background: rgba(255, 249, 221, 0.74);
+    border: 1px solid rgba(45, 125, 175, 0.14);
+  }
+
+  .payment-detail.show {
+    display: block;
+  }
+
+  .qr-placeholder {
+    display: grid;
+    place-items: center;
+    min-height: 180px;
+    margin-top: 14px;
+    border-radius: 20px;
+    border: 2px dashed rgba(45, 125, 175, 0.24);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,248,193,0.68));
+    text-align: center;
+    color: rgba(30, 56, 81, 0.7);
+    font-weight: 700;
+  }
+
   input,
   select,
   textarea {
@@ -790,7 +873,7 @@
           <div class="field-grid">
             <div class="field">
               <label for="product">Selection Summary</label>
-              <input id="product" name="product" readonly value="OG Chocolate Chip x1">
+              <input id="product" name="product" readonly value="">
               <p class="helper-text" id="productHelp">Choose multiple flavors and quantity per flavor for per-piece orders.</p>
             </div>
 
@@ -813,7 +896,7 @@
               </div>
               <div class="field">
                 <label for="pieceQty1">Qty</label>
-                <input id="pieceQty1" class="piece-qty-input" type="number" min="0" value="1">
+                <input id="pieceQty1" class="piece-qty-input" type="number" min="0" value="0">
               </div>
             </div>
             <div class="piece-row">
@@ -920,13 +1003,13 @@
             <p class="helper-text" id="summaryMode">Per piece pricing is based on your selected flavors.</p>
             <div class="summary-lines" id="summaryLines">
               <div class="summary-line">
-                <span>OG Chocolate Chip x1</span>
-                <span>P75</span>
+                <span>No items yet</span>
+                <span>P0</span>
               </div>
             </div>
             <div class="summary-total">
               <span>Total Payment</span>
-              <span id="summaryTotal">P75</span>
+              <span id="summaryTotal">P0</span>
             </div>
           </div>
 
@@ -951,6 +1034,41 @@
     </section>
   </main>
 
+  <div class="modal" id="paymentModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-top">
+        <div>
+          <span class="eyebrow">Order Submitted</span>
+          <h2 style="margin-top:10px;">Review Your Payment</h2>
+          <p class="helper-text" id="modalIntro">Double-check your order details before sending payment.</p>
+        </div>
+        <button class="modal-close" type="button" id="closeModalButton">Close</button>
+      </div>
+
+      <div class="summary-card" style="margin-top:18px;">
+        <h4>Order Snapshot</h4>
+        <div class="summary-lines" id="modalSummaryLines"></div>
+        <div class="summary-total">
+          <span>Total Payment</span>
+          <span id="modalSummaryTotal">P0</span>
+        </div>
+      </div>
+
+      <button type="button" id="payNowButton" style="margin-top:16px;">Pay Now</button>
+
+      <div class="payment-options" id="paymentOptions">
+        <button type="button" class="button-link primary" id="gcashButton">GCash</button>
+        <button type="button" class="button-link secondary" id="bankButton">Bank Transfer</button>
+      </div>
+
+      <div class="payment-detail" id="paymentDetail">
+        <h4 id="paymentDetailTitle">Payment Details</h4>
+        <div class="summary-lines" id="paymentDetailLines"></div>
+        <div class="qr-placeholder" id="paymentQrPlaceholder">Add your payment QR image here later</div>
+      </div>
+    </div>
+  </div>
+
 <script>
   const API_URL = "https://script.google.com/macros/s/AKfycbye3_nNvago7qnMauaDy5r-vZLXLHutHmNEC1HzxKqtZHHx7W0tw5Hkj7V67k9t6T5U/exec";
 
@@ -968,6 +1086,17 @@
   const summaryMode = document.getElementById("summaryMode");
   const summaryLines = document.getElementById("summaryLines");
   const summaryTotal = document.getElementById("summaryTotal");
+  const paymentModal = document.getElementById("paymentModal");
+  const modalSummaryLines = document.getElementById("modalSummaryLines");
+  const modalSummaryTotal = document.getElementById("modalSummaryTotal");
+  const modalIntro = document.getElementById("modalIntro");
+  const closeModalButton = document.getElementById("closeModalButton");
+  const payNowButton = document.getElementById("payNowButton");
+  const paymentOptions = document.getElementById("paymentOptions");
+  const paymentDetail = document.getElementById("paymentDetail");
+  const paymentDetailTitle = document.getElementById("paymentDetailTitle");
+  const paymentDetailLines = document.getElementById("paymentDetailLines");
+  const paymentQrPlaceholder = document.getElementById("paymentQrPlaceholder");
   const boxFlavorSelects = Array.from(document.querySelectorAll(".box-flavor-select"));
   const pieceFlavorSelects = Array.from(document.querySelectorAll(".piece-flavor-select"));
   const pieceQtyInputs = Array.from(document.querySelectorAll(".piece-qty-input"));
@@ -990,6 +1119,27 @@
     5: 595,
     6: 627
   };
+  const paymentConfig = {
+    gcash: {
+      title: "GCash Payment",
+      lines: [
+        ["Account Name", "Bakey Nook"],
+        ["GCash Number", "09XX XXX XXXX"],
+        ["Reminder", "Use your order reference when sending payment."]
+      ],
+      qrText: "Replace this box with your GCash QR image"
+    },
+    bank: {
+      title: "Bank Transfer",
+      lines: [
+        ["Bank", "Your bank name here"],
+        ["Account Name", "Bakey Nook"],
+        ["Account Number", "XXXX-XXXX-XXXX"],
+        ["Reminder", "Use your order reference when sending payment."]
+      ],
+      qrText: "Replace this box with your bank QR or transfer guide"
+    }
+  };
   const flavors = [
     "OG Chocolate Chip",
     "Red Velvet",
@@ -1005,6 +1155,10 @@
 
   function formatPeso(value) {
     return "P" + Number(value).toFixed(0);
+  }
+
+  function generateClientOrderRef() {
+    return "BN-WEB-" + Date.now();
   }
 
   function populateBoxFlavorSelects() {
@@ -1120,6 +1274,43 @@
     summaryTotal.textContent = formatPeso(getPerPieceAmount());
   }
 
+  function openPaymentModal(orderData) {
+    modalIntro.textContent = "Reference: " + orderData.clientOrderRef + " | " + orderData.customerName;
+    modalSummaryLines.innerHTML = `
+      <div class="summary-line"><span>Order Type</span><span>${orderData.option}</span></div>
+      <div class="summary-line"><span>Order Details</span><span>${orderData.product}</span></div>
+      <div class="summary-line"><span>Quantity</span><span>${orderData.quantity}</span></div>
+      <div class="summary-line"><span>Fulfillment</span><span>${orderData.pickupOrDelivery}</span></div>
+      <div class="summary-line"><span>Preferred Date</span><span>${orderData.date}</span></div>
+    `;
+    modalSummaryTotal.textContent = formatPeso(orderData.amount || 0);
+    paymentOptions.classList.remove("show");
+    paymentDetail.classList.remove("show");
+    paymentModal.classList.add("show");
+    paymentModal.setAttribute("aria-hidden", "false");
+  }
+
+  function closePaymentModal() {
+    paymentModal.classList.remove("show");
+    paymentModal.setAttribute("aria-hidden", "true");
+    paymentOptions.classList.remove("show");
+    paymentDetail.classList.remove("show");
+  }
+
+  function showPaymentDetail(type) {
+    const config = paymentConfig[type];
+    if (!config) {
+      return;
+    }
+
+    paymentDetailTitle.textContent = config.title;
+    paymentDetailLines.innerHTML = config.lines
+      .map((line) => `<div class="summary-line"><span>${line[0]}</span><span>${line[1]}</span></div>`)
+      .join("");
+    paymentQrPlaceholder.textContent = config.qrText;
+    paymentDetail.classList.add("show");
+  }
+
   function syncPerPieceTotal() {
     if (orderTypeSelect.value === "Pcs") {
       quantityInput.value = getPerPieceTotal();
@@ -1151,6 +1342,7 @@
     const totalAmount = isBoxOrder ? getBoxTotalAmount() : getPerPieceAmount();
 
     const data = {
+      clientOrderRef: generateClientOrderRef(),
       customerName: document.getElementById("customerName").value.trim(),
       mobile: document.getElementById("mobile").value.trim(),
       product: flavorSummary,
@@ -1190,6 +1382,8 @@
         "Pre-order sent. Bakey Nook can now review your request and confirm the details with you."
       );
 
+      openPaymentModal(data);
+
       event.target.reset();
       dateInput.min = new Date().toISOString().split("T")[0];
       populatePieceFlavorSelects();
@@ -1212,6 +1406,15 @@
   pieceFlavorSelects.forEach((select) => select.addEventListener("change", syncPerPieceTotal));
   boxFlavorSelects.forEach((select) => select.addEventListener("change", updateOrderSummary));
   quantityInput.addEventListener("input", updateOrderSummary);
+  payNowButton.addEventListener("click", () => paymentOptions.classList.add("show"));
+  closeModalButton.addEventListener("click", closePaymentModal);
+  paymentModal.addEventListener("click", (event) => {
+    if (event.target === paymentModal) {
+      closePaymentModal();
+    }
+  });
+  document.getElementById("gcashButton").addEventListener("click", () => showPaymentDetail("gcash"));
+  document.getElementById("bankButton").addEventListener("click", () => showPaymentDetail("bank"));
 </script>
 </body>
 </html>
