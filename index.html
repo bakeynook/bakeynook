@@ -393,19 +393,31 @@
   }
 
   .flavor-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
-    border-radius: 24px;
+    border-radius: 28px;
     min-height: 100%;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.93), rgba(255, 251, 232, 0.98));
     border: 1px solid rgba(45, 125, 175, 0.1);
-    box-shadow: 0 14px 30px rgba(45, 125, 175, 0.08);
+    box-shadow: 0 16px 34px rgba(45, 125, 175, 0.08);
+    transition: transform 0.24s ease, box-shadow 0.24s ease;
+  }
+
+  .flavor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 40px rgba(45, 125, 175, 0.14);
   }
 
   .flavor-photo {
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    background: #fff8d7;
+    background:
+      radial-gradient(circle at top left, rgba(255,255,255,0.58), transparent 30%),
+      #fff8d7;
+    border-bottom: 1px solid rgba(45, 125, 175, 0.08);
   }
 
   .flavor-photo img {
@@ -413,9 +425,13 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transform: scale(1.02);
   }
 
   .flavor-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     padding: 18px;
   }
 
@@ -423,7 +439,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-top: 14px;
+    margin-top: auto;
+    padding-top: 14px;
   }
 
   .mini-action {
@@ -438,9 +455,19 @@
     box-shadow: none;
   }
 
+  .mini-action.add-piece-button {
+    background: rgba(45, 125, 175, 0.08);
+    color: var(--blue-deep);
+  }
+
+  .mini-action.add-box-button {
+    background: rgba(255, 241, 186, 0.82);
+  }
+
   .flavor-card h3 {
     font-size: 1.55rem;
     margin-bottom: 10px;
+    line-height: 1.04;
   }
 
   .flavor-card p {
@@ -754,10 +781,13 @@
   .drawer-box-builder {
     display: none;
     margin-top: 16px;
-    padding: 20px;
-    border-radius: 24px;
-    background: linear-gradient(180deg, rgba(255, 249, 221, 0.96), rgba(255, 255, 255, 0.96));
+    padding: 22px;
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at top right, rgba(45, 125, 175, 0.12), transparent 26%),
+      linear-gradient(180deg, rgba(255, 247, 196, 0.98), rgba(255, 255, 255, 0.98));
     border: 1px solid rgba(45, 125, 175, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
   }
 
   .drawer-box-builder.show {
@@ -769,40 +799,171 @@
   }
 
   .drawer-box-head {
-    margin-bottom: 14px;
+    margin-bottom: 18px;
   }
 
   .drawer-box-head h4 {
     margin: 0 0 6px;
     color: var(--blue-deep);
-    font-size: 1.3rem;
+    font-size: 1.42rem;
+  }
+
+  .drawer-box-subtitle {
+    margin: 8px 0 0;
+    color: rgba(30, 56, 81, 0.72);
+    line-height: 1.55;
+  }
+
+  .builder-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .builder-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.88);
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    color: rgba(30, 56, 81, 0.82);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .builder-step strong {
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    display: inline-grid;
+    place-items: center;
+    background: rgba(45, 125, 175, 0.12);
+    color: var(--blue-deep);
+    font-size: 0.78rem;
   }
 
   .modal-box-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
   }
 
   .modal-box-slot {
+    position: relative;
     padding: 12px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.84);
-    border: 1px solid rgba(45, 125, 175, 0.1);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    box-shadow: 0 10px 18px rgba(45, 125, 175, 0.06);
+  }
+
+  .modal-box-slot::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(255,255,255,0.6);
+    pointer-events: none;
+  }
+
+  .modal-box-slot-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
   }
 
   .modal-box-slot img {
     width: 100%;
-    height: 120px;
+    height: 138px;
     object-fit: cover;
     display: block;
-    border-radius: 16px;
+    border-radius: 18px;
     margin-bottom: 10px;
     background: #fff7d0;
   }
 
+  .modal-box-slot select {
+    border-radius: 14px;
+    padding: 12px 13px;
+  }
+
+  .builder-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: center;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(45, 125, 175, 0.2);
+  }
+
+  .builder-footer-copy strong {
+    display: block;
+    color: var(--blue-deep);
+    font-size: 0.94rem;
+  }
+
+  .builder-footer-copy span {
+    display: block;
+    margin-top: 4px;
+    color: rgba(30, 56, 81, 0.68);
+    font-size: 0.84rem;
+  }
+
+  .builder-status-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    color: var(--blue-deep);
+    font-weight: 800;
+  }
+
+  .checkout-stack {
+    display: grid;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .checkout-stage {
+    padding: 18px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,250,228,0.94));
+    border: 1px solid rgba(45, 125, 175, 0.12);
+  }
+
+  .checkout-stage h4 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    color: var(--blue-deep);
+  }
+
+  .checkout-stage p {
+    margin: 0;
+    color: rgba(30, 56, 81, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
   .drawer-primary-action {
     margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .cart-notes {
@@ -898,13 +1059,21 @@
 
   .cart-item-line {
     display: grid;
-    grid-template-columns: 56px minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 12px;
     align-items: start;
     padding: 10px 0;
   }
 
+  .cart-item-main {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+  }
+
   .cart-item-thumb {
+    flex: 0 0 56px;
     width: 56px;
     height: 56px;
     border-radius: 14px;
@@ -923,6 +1092,7 @@
   .cart-item-copy strong {
     display: block;
     font-size: 0.92rem;
+    line-height: 1.2;
   }
 
   .cart-item-copy span {
@@ -931,37 +1101,61 @@
     color: rgba(30, 56, 81, 0.68);
   }
 
+  .cart-item-copy {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
   .cart-item-meta {
-    display: grid;
-    justify-items: end;
-    align-content: start;
-    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    min-width: 0;
+    flex-wrap: nowrap;
   }
 
   .cart-item-price {
-    font-size: 0.88rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--blue-deep);
     white-space: nowrap;
   }
 
   .cart-line-actions {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    padding: 3px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+  }
+
+  .cart-line-actions.qty-stepper {
+    display: grid;
+    grid-template-columns: 32px minmax(18px, auto) 32px;
+    align-items: center;
+    justify-content: end;
     gap: 6px;
-    flex-wrap: wrap;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
   }
 
   .cart-line-button {
-    min-width: 32px;
-    min-height: 32px;
-    padding: 0 10px;
-    border-radius: 10px;
-    border: 1px solid rgba(45, 125, 175, 0.12);
-    background: rgba(255,255,255,0.92);
+    min-width: 30px;
+    min-height: 30px;
+    padding: 0 8px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
     color: var(--ink);
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     font-weight: 700;
     cursor: pointer;
     white-space: nowrap;
@@ -971,16 +1165,81 @@
     color: #9f3030;
   }
 
+  .cart-line-button.icon-only {
+    min-width: 34px;
+    min-height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-line-button.icon-only svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+  }
+
+  .cart-line-actions.qty-stepper .cart-line-button {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(45, 125, 175, 0.14);
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 8px 18px rgba(45, 125, 175, 0.08);
+  }
+
   .cart-item-spacer {
     display: none;
   }
 
   .cart-line-qty {
-    min-width: 32px;
+    min-width: 30px;
     text-align: center;
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     font-weight: 700;
     color: var(--ink);
+    line-height: 30px;
+  }
+
+  .cart-line-actions.qty-stepper .cart-line-qty {
+    min-width: 18px;
+    font-size: 0.84rem;
+    line-height: 1;
+  }
+
+  .box-set-copy strong {
+    display: block;
+    font-size: 0.94rem;
+  }
+
+  .box-set-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    color: rgba(30, 56, 81, 0.68);
+    font-size: 0.82rem;
+  }
+
+  .box-set-chip-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .box-set-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(45, 125, 175, 0.08);
+    color: var(--blue-deep);
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1;
   }
 
   .summary-line span:last-child {
@@ -999,6 +1258,53 @@
     font-size: 1.08rem;
     font-weight: 700;
     color: var(--blue-deep);
+  }
+
+  .order-summary-card {
+    padding: 22px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,250,228,0.96));
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    box-shadow: 0 14px 30px rgba(45, 125, 175, 0.06);
+  }
+
+  .order-summary-card h4 {
+    margin: 0 0 14px;
+    font-size: 1.18rem;
+    color: var(--blue-deep);
+  }
+
+  .order-summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 0;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(45, 125, 175, 0.08);
+  }
+
+  .order-summary-line:last-of-type {
+    border-bottom: none;
+  }
+
+  .order-summary-line strong {
+    color: var(--blue-deep);
+  }
+
+  .continue-shopping-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+    min-height: 46px;
+    padding: 0 16px;
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--ink);
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    font-weight: 700;
   }
 
   .modal {
@@ -1021,9 +1327,9 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    width: min(760px, calc(100% - 28px));
-    max-height: min(88vh, 920px);
-    padding: 22px;
+    width: min(1120px, calc(100% - 42px));
+    max-height: min(90vh, 940px);
+    padding: 26px;
     background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,251,232,0.98));
     box-shadow: 0 28px 70px rgba(19, 36, 51, 0.28);
     border: 1px solid rgba(45, 125, 175, 0.16);
@@ -1034,6 +1340,10 @@
     overflow: auto;
     opacity: 0;
     pointer-events: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.85fr);
+    gap: 22px 24px;
+    align-content: start;
   }
 
   .drawer.show {
@@ -1055,6 +1365,85 @@
   .drawer-backdrop.show {
     opacity: 1;
     pointer-events: auto;
+  }
+
+  #cartDrawer .cart-head {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+  }
+
+  #cartDrawer > .summary-card,
+  #drawerBoxBuilder {
+    grid-column: 1;
+  }
+
+  #cartDrawer > .summary-card {
+    grid-row: 2;
+  }
+
+  #drawerBoxBuilder {
+    grid-row: 3;
+  }
+
+  #drawerPrimaryButton,
+  #checkoutForm {
+    grid-column: 2;
+  }
+
+  #drawerOrderSummaryCard {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+  }
+
+  #cartDrawer > .summary-card {
+    margin-top: 0;
+    min-height: 100%;
+  }
+
+  #drawerPrimaryButton {
+    margin-top: 0;
+    align-self: start;
+    position: sticky;
+    top: 0;
+  }
+
+  #checkoutForm {
+    margin-top: 0;
+    padding: 20px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,250,228,0.96));
+    border: 1px solid rgba(45, 125, 175, 0.12);
+    box-shadow: 0 14px 30px rgba(45, 125, 175, 0.06);
+  }
+
+  #checkoutSubmitButton {
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  #cartDrawer.drawer-checkout-mode #checkoutForm {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+    align-self: start;
+  }
+
+  #cartDrawer.drawer-checkout-mode > .summary-card {
+    grid-column: 2;
+    grid-row: 3;
+    min-height: auto;
+  }
+
+  #cartDrawer.drawer-checkout-mode #drawerOrderSummaryCard {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+  }
+
+  #cartDrawer.drawer-checkout-mode #checkoutSubmitButton {
+    display: inline-flex;
   }
 
   .modal-card {
@@ -1238,6 +1627,36 @@
 
     .picker-card {
       grid-template-columns: 84px minmax(0, 1fr) 120px;
+    }
+
+    .drawer {
+      width: min(92vw, 760px);
+      grid-template-columns: 1fr;
+    }
+
+    #cartDrawer .cart-head,
+    #cartDrawer > .summary-card,
+    #drawerBoxBuilder,
+    #drawerPrimaryButton,
+    #checkoutForm {
+      grid-column: 1;
+    }
+
+    #cartDrawer > .summary-card,
+    #drawerBoxBuilder,
+    #drawerOrderSummaryCard {
+      grid-row: auto;
+    }
+
+    #cartDrawer.drawer-checkout-mode > .summary-card,
+    #cartDrawer.drawer-checkout-mode #drawerOrderSummaryCard,
+    #cartDrawer.drawer-checkout-mode #checkoutForm {
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    #drawerPrimaryButton {
+      position: static;
     }
   }
 
@@ -1456,21 +1875,32 @@
     }
 
     .cart-item-line {
-      grid-template-columns: 56px minmax(0, 1fr);
+      grid-template-columns: 1fr;
       gap: 10px;
       align-items: start;
     }
 
+    .cart-item-main {
+      gap: 10px;
+    }
+
     .cart-item-meta {
-      grid-column: 1 / -1;
-      justify-items: start;
+      justify-content: flex-start;
       padding-left: 0;
       gap: 10px;
+      min-width: 0;
+      flex-wrap: wrap;
     }
 
     .cart-line-actions {
       justify-content: flex-start;
       flex-wrap: wrap;
+    }
+
+    .cart-line-actions.qty-stepper {
+      grid-template-columns: 30px minmax(18px, auto) 30px;
+      justify-content: flex-start;
+      gap: 6px;
     }
 
     #order-form {
@@ -1487,6 +1917,7 @@
       border-radius: 24px 24px 0 0;
       transform: translateY(100%);
       padding: 16px 14px calc(22px + env(safe-area-inset-bottom));
+      display: block;
     }
 
     .drawer.show {
@@ -1523,6 +1954,38 @@
       height: 94px;
       border-radius: 14px;
       margin-bottom: 8px;
+    }
+
+    .builder-steps {
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .builder-step {
+      width: 100%;
+      justify-content: flex-start;
+      font-size: 0.78rem;
+    }
+
+    .builder-footer {
+      display: grid;
+      gap: 10px;
+      justify-items: start;
+    }
+
+    .builder-status-pill {
+      min-width: 0;
+      width: 100%;
+    }
+
+    .checkout-stack {
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .checkout-stage {
+      padding: 14px;
+      border-radius: 18px;
     }
 
     #checkoutForm {
@@ -1990,73 +2453,82 @@
       <div class="summary-lines" id="drawerSummaryLines">
         <div class="summary-line">
           <span>No items yet</span>
-          <span>P0</span>
+          <span>PHP 0</span>
         </div>
-      </div>
-      <div class="summary-total">
-        <span>Total Payment</span>
-        <span id="drawerSummaryTotal">P0</span>
       </div>
     </div>
 
     <div class="drawer-box-builder" id="drawerBoxBuilder">
       <div class="drawer-box-head">
-        <h4>Build Your Box of 6</h4>
-        <p class="helper-text">Complete your mix here before placing the order.</p>
+        <h4>Create Your Box of 6</h4>
+        <p class="drawer-box-subtitle">Choose your cookie mix and make it your own.</p>
+        <div class="builder-steps">
+          <span class="builder-step"><strong>1</strong> Choose favorites</span>
+          <span class="builder-step"><strong>2</strong> Save your box</span>
+          <span class="builder-step"><strong>3</strong> Check out</span>
+        </div>
       </div>
 
       <div class="modal-box-grid">
         <div class="modal-box-slot">
+          <div class="modal-box-slot-label">Cookie 1</div>
           <img id="drawerBoxPreview1" src="logo.png" alt="Box slot 1 preview">
-          <div class="field">
-            <label for="drawerBoxFlavor1">Cookie 1</label>
-            <select id="drawerBoxFlavor1" class="drawer-box-flavor-select"></select>
-          </div>
+          <select id="drawerBoxFlavor1" class="drawer-box-flavor-select"></select>
         </div>
         <div class="modal-box-slot">
+          <div class="modal-box-slot-label">Cookie 2</div>
           <img id="drawerBoxPreview2" src="logo.png" alt="Box slot 2 preview">
-          <div class="field">
-            <label for="drawerBoxFlavor2">Cookie 2</label>
-            <select id="drawerBoxFlavor2" class="drawer-box-flavor-select"></select>
-          </div>
+          <select id="drawerBoxFlavor2" class="drawer-box-flavor-select"></select>
         </div>
         <div class="modal-box-slot">
+          <div class="modal-box-slot-label">Cookie 3</div>
           <img id="drawerBoxPreview3" src="logo.png" alt="Box slot 3 preview">
-          <div class="field">
-            <label for="drawerBoxFlavor3">Cookie 3</label>
-            <select id="drawerBoxFlavor3" class="drawer-box-flavor-select"></select>
-          </div>
+          <select id="drawerBoxFlavor3" class="drawer-box-flavor-select"></select>
         </div>
         <div class="modal-box-slot">
+          <div class="modal-box-slot-label">Cookie 4</div>
           <img id="drawerBoxPreview4" src="logo.png" alt="Box slot 4 preview">
-          <div class="field">
-            <label for="drawerBoxFlavor4">Cookie 4</label>
-            <select id="drawerBoxFlavor4" class="drawer-box-flavor-select"></select>
-          </div>
+          <select id="drawerBoxFlavor4" class="drawer-box-flavor-select"></select>
         </div>
         <div class="modal-box-slot">
+          <div class="modal-box-slot-label">Cookie 5</div>
           <img id="drawerBoxPreview5" src="logo.png" alt="Box slot 5 preview">
-          <div class="field">
-            <label for="drawerBoxFlavor5">Cookie 5</label>
-            <select id="drawerBoxFlavor5" class="drawer-box-flavor-select"></select>
-          </div>
+          <select id="drawerBoxFlavor5" class="drawer-box-flavor-select"></select>
         </div>
         <div class="modal-box-slot">
+          <div class="modal-box-slot-label">Cookie 6</div>
           <img id="drawerBoxPreview6" src="logo.png" alt="Box slot 6 preview">
-          <div class="field">
-            <label for="drawerBoxFlavor6">Cookie 6</label>
-            <select id="drawerBoxFlavor6" class="drawer-box-flavor-select"></select>
-          </div>
+          <select id="drawerBoxFlavor6" class="drawer-box-flavor-select"></select>
         </div>
       </div>
 
-      <div class="field" style="margin-top:14px;">
-        <label>Box Sets</label>
-        <p class="helper-text">Add one completed mix at a time, then build another set if needed.</p>
+      <div class="builder-footer">
+        <div class="builder-footer-copy">
+          <strong>Made just for you</strong>
+          <span>Mix and match your cookies, then save each box you love.</span>
+        </div>
+        <div class="builder-status-pill" id="drawerBoxStatusPill">0 / 6 picked</div>
       </div>
     </div>
 
-    <button id="drawerPrimaryButton" class="drawer-primary-action" type="button">Add to Cart</button>
+    <div class="order-summary-card" id="drawerOrderSummaryCard">
+      <h4>Order Summary</h4>
+      <div class="order-summary-line">
+        <span>Items</span>
+        <strong id="drawerOrderItemCount">0</strong>
+      </div>
+      <div class="order-summary-line">
+        <span>Subtotal</span>
+        <strong id="drawerOrderSubtotal">PHP 0</strong>
+      </div>
+      <div class="order-summary-line">
+        <span>Total</span>
+        <strong id="drawerOrderTotal">PHP 0</strong>
+      </div>
+      <button id="drawerPrimaryButton" class="drawer-primary-action" type="button">Add to Cart</button>
+      <a class="continue-shopping-link" id="continueShoppingLink" href="#flavors">Continue Shopping</a>
+      <button id="checkoutSubmitButton" class="drawer-primary-action" type="submit" form="checkoutForm">Place Order</button>
+    </div>
 
     <form id="checkoutForm" style="margin-top:16px;">
       <div class="field-grid">
@@ -2091,7 +2563,6 @@
         <input id="notes" name="notes" placeholder="Landmark, request, or message">
       </div>
 
-      <button id="submitButton" type="submit" style="margin-top:8px;">Place Order</button>
       <p id="result" aria-live="polite"></p>
     </form>
   </aside>
@@ -2100,34 +2571,23 @@
     <div class="modal-card">
       <div class="modal-top">
         <div>
-          <span class="eyebrow">Order Submitted</span>
-          <h2 style="margin-top:10px;">Review Your Payment</h2>
-          <p class="helper-text" id="modalIntro">Double-check your order details before sending payment.</p>
+          <span class="eyebrow">Order Confirmed</span>
+          <h2 style="margin-top:10px;">Order Received</h2>
+          <p class="helper-text" id="modalIntro">We received your order and will contact you using the mobile number you provided.</p>
         </div>
         <button class="modal-close" type="button" id="closeModalButton">Close</button>
       </div>
 
       <div class="summary-card" style="margin-top:18px;">
-        <h4>Order Snapshot</h4>
+        <h4>Order Confirmation</h4>
         <div class="summary-lines" id="modalSummaryLines"></div>
         <div class="summary-total">
           <span>Total Payment</span>
-          <span id="modalSummaryTotal">P0</span>
+          <span id="modalSummaryTotal">PHP 0</span>
         </div>
       </div>
 
-      <button type="button" id="payNowButton" style="margin-top:16px;">Pay Now</button>
-
-      <div class="payment-options" id="paymentOptions">
-        <button type="button" class="button-link primary" id="gcashButton">GCash</button>
-        <button type="button" class="button-link secondary" id="bankButton">Bank Transfer</button>
-      </div>
-
-      <div class="payment-detail" id="paymentDetail">
-        <h4 id="paymentDetailTitle">Payment Details</h4>
-        <div class="summary-lines" id="paymentDetailLines"></div>
-        <div class="qr-placeholder" id="paymentQrPlaceholder">Add your payment QR image here later</div>
-      </div>
+      <button type="button" id="confirmationBackButton" style="margin-top:16px;">Back to Shop</button>
     </div>
   </div>
 
@@ -2137,7 +2597,7 @@
   const result = document.getElementById("result");
   const checkoutForm = document.getElementById("checkoutForm");
   const proceedCheckoutButton = document.getElementById("proceedCheckoutButton");
-  const submitButton = document.getElementById("submitButton");
+  const checkoutSubmitButton = document.getElementById("checkoutSubmitButton");
   const cartButton = document.getElementById("cartButton");
   const cartCount = document.getElementById("cartCount");
   const cartDrawer = document.getElementById("cartDrawer");
@@ -2152,9 +2612,13 @@
   const sidebarTotal = document.getElementById("sidebarTotal");
   const drawerSummaryMode = document.getElementById("drawerSummaryMode");
   const drawerSummaryLines = document.getElementById("drawerSummaryLines");
-  const drawerSummaryTotal = document.getElementById("drawerSummaryTotal");
   const drawerBoxBuilder = document.getElementById("drawerBoxBuilder");
+  const drawerBoxStatusPill = document.getElementById("drawerBoxStatusPill");
+  const drawerOrderItemCount = document.getElementById("drawerOrderItemCount");
+  const drawerOrderSubtotal = document.getElementById("drawerOrderSubtotal");
+  const drawerOrderTotal = document.getElementById("drawerOrderTotal");
   const drawerPrimaryButton = document.getElementById("drawerPrimaryButton");
+  const continueShoppingLink = document.getElementById("continueShoppingLink");
   const dateInput = document.getElementById("date");
   const orderTypeSelect = document.getElementById("option");
   const productSelect = document.getElementById("product");
@@ -2170,12 +2634,7 @@
   const modalSummaryTotal = document.getElementById("modalSummaryTotal");
   const modalIntro = document.getElementById("modalIntro");
   const closeModalButton = document.getElementById("closeModalButton");
-  const payNowButton = document.getElementById("payNowButton");
-  const paymentOptions = document.getElementById("paymentOptions");
-  const paymentDetail = document.getElementById("paymentDetail");
-  const paymentDetailTitle = document.getElementById("paymentDetailTitle");
-  const paymentDetailLines = document.getElementById("paymentDetailLines");
-  const paymentQrPlaceholder = document.getElementById("paymentQrPlaceholder");
+  const confirmationBackButton = document.getElementById("confirmationBackButton");
   const boxFlavorSelects = Array.from(document.querySelectorAll(".box-flavor-select"));
   const pieceFlavorSelects = Array.from(document.querySelectorAll(".piece-flavor-select"));
   const pieceQtyInputs = Array.from(document.querySelectorAll(".piece-qty-input"));
@@ -2239,27 +2698,6 @@
     "Cinnamon": "cinnamon.png",
     "Double Trouble": "doubletrouble.png"
   };
-  const paymentConfig = {
-    gcash: {
-      title: "GCash Payment",
-      lines: [
-        ["Account Name", "Bakey Nook"],
-        ["GCash Number", "09XX XXX XXXX"],
-        ["Reminder", "Use your order reference when sending payment."]
-      ],
-      qrText: "Replace this box with your GCash QR image"
-    },
-    bank: {
-      title: "Bank Transfer",
-      lines: [
-        ["Bank", "Your bank name here"],
-        ["Account Name", "Bakey Nook"],
-        ["Account Number", "XXXX-XXXX-XXXX"],
-        ["Reminder", "Use your order reference when sending payment."]
-      ],
-      qrText: "Replace this box with your bank QR or transfer guide"
-    }
-  };
   const flavors = [
     "OG Chocolate Chip",
     "Red Velvet",
@@ -2276,7 +2714,7 @@
   dateInput.min = new Date().toISOString().split("T")[0];
 
   function formatPeso(value) {
-    return "P" + Number(value).toFixed(0);
+    return "PHP " + Number(value).toFixed(0);
   }
 
   function generateClientOrderRef() {
@@ -2358,6 +2796,7 @@
     drawerBoxBuilder.classList.toggle("show", isBoxOrder);
 
     if (!isBoxOrder) {
+      drawerBoxStatusPill.textContent = "0 / 6 picked";
       return;
     }
 
@@ -2365,6 +2804,7 @@
       select.value = boxFlavorSelects[index].value;
     });
 
+    drawerBoxStatusPill.textContent = `${getDraftBoxSelections().length} / 6 picked`;
     syncDrawerBoxPreviews();
   }
 
@@ -2452,20 +2892,59 @@
   function syncDrawerSummary() {
     drawerSummaryMode.textContent = sidebarSummaryMode.textContent;
     drawerSummaryLines.innerHTML = summaryLines.innerHTML;
-    drawerSummaryTotal.textContent = sidebarTotal.textContent;
   }
 
-  function renderCartItemLine(flavor, meta, priceText, actionsHtml = "") {
+  function renderCartItemLine(flavor, meta, priceText, actionsHtml = "", actionClass = "") {
     return `
       <div class="cart-item-line">
-        <div class="cart-item-thumb"><img src="${flavorImages[flavor] || "logo.png"}" alt="${flavor}"></div>
-        <div class="cart-item-copy">
-          <strong>${flavor}</strong>
-          <span>${meta}</span>
+        <div class="cart-item-main">
+          <div class="cart-item-thumb"><img src="${flavorImages[flavor] || "logo.png"}" alt="${flavor}"></div>
+          <div class="cart-item-copy">
+            <strong>${flavor}</strong>
+            <span>${meta}</span>
+          </div>
         </div>
         <div class="cart-item-meta">
           <div class="cart-item-price">${priceText}</div>
-          ${actionsHtml ? `<div class="cart-line-actions">${actionsHtml}</div>` : `<div class="cart-item-spacer"></div>`}
+          ${actionsHtml ? `<div class="cart-line-actions ${actionClass}">${actionsHtml}</div>` : `<div class="cart-item-spacer"></div>`}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderBoxSetLine(set, index) {
+    const chips = set.flavors
+      .map((flavor) => `<span class="box-set-chip">${flavor}</span>`)
+      .join("");
+
+    return `
+      <div class="cart-item-line">
+        <div class="cart-item-main">
+          <div class="cart-item-thumb"><img src="${flavorImages[set.flavors[0]] || "logo.png"}" alt="Box Set ${index + 1}"></div>
+          <div class="cart-item-copy box-set-copy">
+            <strong>Box Set ${index + 1}</strong>
+            <div class="box-set-meta">
+              <span>6 cookies</span>
+              <span>•</span>
+              <span>${formatPeso(set.unitPrice)}</span>
+            </div>
+            <div class="box-set-chip-wrap">${chips}</div>
+          </div>
+        </div>
+        <div class="cart-item-meta">
+          <div class="cart-item-price">${formatPeso(set.unitPrice)}</div>
+          <div class="cart-line-actions">
+            <button class="cart-line-button" type="button" data-action="edit-box-set" data-index="${index}">Edit</button>
+            <button class="cart-line-button remove icon-only" type="button" data-action="remove-box-set" data-index="${index}" aria-label="Remove box set" title="Remove box set">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18"></path>
+                <path d="M8 6V4.8c0-.66.54-1.2 1.2-1.2h5.6c.66 0 1.2.54 1.2 1.2V6"></path>
+                <path d="M6.5 6l1 12c.06.8.72 1.4 1.52 1.4h6.96c.8 0 1.46-.6 1.52-1.4l1-12"></path>
+                <path d="M10 10.2v5.6"></path>
+                <path d="M14 10.2v5.6"></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -2477,6 +2956,11 @@
     const hasBoxItems = committedBoxSets.length > 0;
     const hasItems = isBoxOrder ? hasBoxItems : hasPerPieceItems;
     const isCompleteBox = getDraftBoxSelections().length === 6;
+    const totalText = sidebarTotal.textContent;
+
+    drawerOrderItemCount.textContent = String(getCartCountValue());
+    drawerOrderSubtotal.textContent = totalText;
+    drawerOrderTotal.textContent = totalText;
 
     if (drawerMode === "checkout") {
       drawerEyebrow.textContent = "Checkout";
@@ -2489,6 +2973,7 @@
       drawerTitle.textContent = "Review Your Picks";
     }
 
+    cartDrawer.classList.toggle("drawer-checkout-mode", drawerMode === "checkout");
     drawerBoxBuilder.classList.toggle("checkout-hidden", drawerMode === "checkout");
     checkoutForm.style.display = drawerMode === "checkout" ? "block" : "none";
     drawerPrimaryButton.style.display = drawerMode === "checkout" ? "none" : "block";
@@ -2583,16 +3068,7 @@
       const draftSelections = getDraftBoxSelections();
       const isCompleteBox = draftSelections.length === 6;
       const committedLines = committedBoxSets
-        .map((set, index) => {
-          const setSummary = set.flavors.join(", ");
-          return renderCartItemLine(
-            set.flavors[0],
-            `Box Set ${index + 1}<br>${setSummary}`,
-            formatPeso(set.unitPrice),
-            `<button class="cart-line-button" type="button" data-action="edit-box-set" data-index="${index}">Edit</button>
-             <button class="cart-line-button remove" type="button" data-action="remove-box-set" data-index="${index}">Remove</button>`
-          );
-        })
+        .map((set, index) => renderBoxSetLine(set, index))
         .join("");
 
       if (isCompleteBox) {
@@ -2626,7 +3102,8 @@
             formatPeso(flavorPrices[item.flavor] * item.qty),
             `<button class="cart-line-button" type="button" data-action="piece-minus" data-index="${item.rowIndex}">-</button>
              <span class="cart-line-qty">${item.qty}</span>
-             <button class="cart-line-button" type="button" data-action="piece-plus" data-index="${item.rowIndex}">+</button>`
+             <button class="cart-line-button" type="button" data-action="piece-plus" data-index="${item.rowIndex}">+</button>`,
+            "qty-stepper"
           ))
           .join("")
       : `<div class="summary-line"><span>No items yet</span><span>${formatPeso(0)}</span></div>`;
@@ -2655,6 +3132,21 @@
     quantityInput.value = String(committedBoxSets.length);
     setStatus("success", `Box Set ${committedBoxSets.length} added to cart.`);
     updateOrderSummary();
+  }
+
+  function resetCartState() {
+    committedBoxSets = [];
+    orderTypeSelect.value = "Pcs";
+    quantityInput.value = "";
+    productSelect.value = "";
+    pieceQtyInputs.forEach((input) => {
+      input.value = "0";
+    });
+    populatePieceFlavorSelects();
+    populateBoxFlavorSelects();
+    populateDrawerBoxFlavorSelects();
+    syncOrderTypeUI();
+    updateCartBadge();
   }
 
   function loadBoxSetIntoDraft(boxSet) {
@@ -2715,8 +3207,11 @@
   }
 
   function openPaymentModal(orderData) {
-    modalIntro.textContent = "Reference: " + orderData.clientOrderRef + " | " + orderData.customerName;
+    modalIntro.textContent = "We'll review your order and send the confirmation and payment details to " + orderData.mobile + ".";
     modalSummaryLines.innerHTML = `
+      <div class="summary-line"><span>Order ID</span><span>${orderData.clientOrderRef}</span></div>
+      <div class="summary-line"><span>Name</span><span>${orderData.customerName}</span></div>
+      <div class="summary-line"><span>Mobile</span><span>${orderData.mobile}</span></div>
       <div class="summary-line"><span>Order Type</span><span>${orderData.option}</span></div>
       <div class="summary-line"><span>Order Details</span><span>${orderData.product}</span></div>
       <div class="summary-line"><span>Quantity</span><span>${orderData.quantity}</span></div>
@@ -2724,8 +3219,6 @@
       <div class="summary-line"><span>Preferred Date</span><span>${orderData.date}</span></div>
     `;
     modalSummaryTotal.textContent = formatPeso(orderData.amount || 0);
-    paymentOptions.classList.remove("show");
-    paymentDetail.classList.remove("show");
     paymentModal.classList.add("show");
     paymentModal.setAttribute("aria-hidden", "false");
   }
@@ -2733,22 +3226,6 @@
   function closePaymentModal() {
     paymentModal.classList.remove("show");
     paymentModal.setAttribute("aria-hidden", "true");
-    paymentOptions.classList.remove("show");
-    paymentDetail.classList.remove("show");
-  }
-
-  function showPaymentDetail(type) {
-    const config = paymentConfig[type];
-    if (!config) {
-      return;
-    }
-
-    paymentDetailTitle.textContent = config.title;
-    paymentDetailLines.innerHTML = config.lines
-      .map((line) => `<div class="summary-line"><span>${line[0]}</span><span>${line[1]}</span></div>`)
-      .join("");
-    paymentQrPlaceholder.textContent = config.qrText;
-    paymentDetail.classList.add("show");
   }
 
   function syncPerPieceTotal() {
@@ -2841,8 +3318,8 @@
       return;
     }
 
-    submitButton.disabled = true;
-    submitButton.style.opacity = "0.7";
+    checkoutSubmitButton.disabled = true;
+    checkoutSubmitButton.style.opacity = "0.7";
     setStatus("info", "Sending your pre-order request...");
 
     try {
@@ -2861,25 +3338,18 @@
       openPaymentModal(data);
 
       event.target.reset();
-      committedBoxSets = [];
       dateInput.min = new Date().toISOString().split("T")[0];
-      populatePieceFlavorSelects();
-      populateBoxFlavorSelects();
-      populateDrawerBoxFlavorSelects();
-      syncOrderTypeUI();
+      resetCartState();
     } catch (error) {
       setStatus("error", "Something went wrong while sending your order. Please try again.");
       console.error(error);
     } finally {
-      submitButton.disabled = false;
-      submitButton.style.opacity = "1";
+      checkoutSubmitButton.disabled = false;
+      checkoutSubmitButton.style.opacity = "1";
     }
   }
 
-  populatePieceFlavorSelects();
-  populateBoxFlavorSelects();
-  populateDrawerBoxFlavorSelects();
-  syncOrderTypeUI();
+  resetCartState();
   orderTypeSelect.addEventListener("change", syncOrderTypeUI);
   pieceQtyInputs.forEach((input) => input.addEventListener("input", syncPerPieceTotal));
   pieceFlavorSelects.forEach((select) => select.addEventListener("change", syncPerPieceTotal));
@@ -2916,6 +3386,9 @@
 
     openCheckoutView();
   });
+  continueShoppingLink.addEventListener("click", () => {
+    closeCartDrawer();
+  });
   cartButton.addEventListener("click", openCartFromHeader);
   proceedCheckoutButton.addEventListener("click", () => openCartDrawer("cart"));
   sidebarCheckoutButton.addEventListener("click", openCheckoutView);
@@ -2924,15 +3397,13 @@
   cartDrawerBackdrop.addEventListener("click", closeCartDrawer);
   addPieceButtons.forEach((button) => button.addEventListener("click", () => addPieceToCart(button.dataset.flavor)));
   addBoxButtons.forEach((button) => button.addEventListener("click", () => addFlavorToBox(button.dataset.flavor)));
-  payNowButton.addEventListener("click", () => paymentOptions.classList.add("show"));
+  confirmationBackButton.addEventListener("click", closePaymentModal);
   closeModalButton.addEventListener("click", closePaymentModal);
   paymentModal.addEventListener("click", (event) => {
     if (event.target === paymentModal) {
       closePaymentModal();
     }
   });
-  document.getElementById("gcashButton").addEventListener("click", () => showPaymentDetail("gcash"));
-  document.getElementById("bankButton").addEventListener("click", () => showPaymentDetail("bank"));
 </script>
 </body>
 </html>
